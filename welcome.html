@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>École La Victoire - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="school-branding">
+                <img src="assets/logo.png" alt="Logo" class="header-logo">
+                <div>
+                    <h1 class="school-name">École La Victoire</h1>
+                    <p class="school-subtitle">Tableau de Bord des Inscriptions</p>
+                </div>
+            </div>
+            <div class="user-controls">
+                 <span class="welcome-message">Bienvenue, <strong id="operator-name-header">Opérateur</strong></span>
+                <button id="new-inscription-btn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Nouvelle Inscription
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <!-- Stat Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-primary"><i class="fas fa-users"></i></div>
+                <div>
+                    <h3 class="stat-label">Inscriptions Totales</h3>
+                    <p id="total-inscriptions" class="stat-value">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                 <div class="stat-icon icon-success"><i class="fas fa-user-plus"></i></div>
+                <div>
+                    <h3 class="stat-label">Nouvelles Inscriptions</h3>
+                    <p id="nouvelles-inscriptions" class="stat-value">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-info"><i class="fas fa-redo-alt"></i></div>
+                <div>
+                    <h3 class="stat-label">Réinscriptions</h3>
+                    <p id="reinscriptions" class="stat-value">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-warning"><i class="fas fa-bus"></i></div>
+                <div>
+                    <h3 class="stat-label">Taux de Transport</h3>
+                     <p id="transport-rate" class="stat-value">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts and Recent Activity -->
+        <div class="dashboard-grid">
+            <div class="card chart-container">
+                <h3 class="card-header">Inscriptions par Niveau</h3>
+                <div class="chart-wrapper">
+                    <canvas id="level-chart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-container">
+                <h3 class="card-header">Répartition des Services</h3>
+                <div class="chart-wrapper-small">
+                    <canvas id="services-chart"></canvas>
+                </div>
+            </div>
+             <div class="card activity-container">
+                <h3 class="card-header">Activité Récente</h3>
+                <table class="activity-table">
+                    <tbody id="recent-activity-tbody">
+                        <!-- Rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                // Pour le dev, on ne redirige pas.
+            }
+            document.getElementById('operator-name-header').textContent = operatorName || 'Opérateur';
+
+            document.getElementById('new-inscription-btn').addEventListener('click', function() {
+                Object.keys(localStorage).forEach(key => {
+                    if (key.startsWith('step')) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                localStorage.removeItem('currentInscriptionId');
+                window.location.href = 'steps/step1-type-inscription.html';
+            });
+
+            async function fetchDashboardData() {
+                try {
+                    const response = await fetch('php/get-dashboard-stats.php');
+                    if (!response.ok) {
+                        throw new Error(`Erreur HTTP! Statut: ${response.status}`);
+                    }
+                    const data = await response.json();
+
+                    if (data.status === 'success') {
+                        updateDashboardUI(data);
+                    } else {
+                        throw new Error(data.message || 'Erreur lors de la récupération des données.');
+                    }
+                } catch (error) {
+                    console.error("Erreur de chargement du tableau de bord:", error);
+                    const mainContent = document.querySelector('main');
+                    mainContent.innerHTML = `<div class="error-message">
+                        <strong>Erreur!</strong>
+                        <span>${error.message}</span>
+                    </div>`;
+                }
+            }
+
+            function updateDashboardUI(data) {
+                updateStatCards(data.stats);
+                updateLevelChart(data.stats.inscriptionsParNiveau);
+                updateServicesChart(data.stats.repartitionServices);
+                updateRecentActivity(data.recentActivity);
+            }
+
+            function updateStatCards(stats) {
+                document.getElementById('total-inscriptions').textContent = stats.totalInscriptions;
+                document.getElementById('nouvelles-inscriptions').textContent = stats.nouvellesInscriptions;
+                document.getElementById('reinscriptions').textContent = stats.reinscriptions;
+                const transportRate = stats.totalInscriptions > 0 ? ((stats.repartitionServices.transport / stats.totalInscriptions) * 100).toFixed(0) + '%' : '0%';
+                document.getElementById('transport-rate').textContent = transportRate;
+            }
+
+            function updateRecentActivity(activities) {
+                const tbody = document.getElementById('recent-activity-tbody');
+                tbody.innerHTML = '';
+                if (activities.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" class="placeholder-text">Aucune activité récente</td></tr>';
+                    return;
+                }
+                activities.forEach(activity => {
+                    const date = new Date(activity.date_creation);
+                    const formattedDate = `${date.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit'})} ${date.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}`;
+                    const tr = `
+                        <tr class="activity-row">
+                            <td class="activity-name">${activity.prenom_eleve_fr} ${activity.nom_eleve_fr}</td>
+                            <td class="activity-level">${activity.niveau_demande}</td>
+                            <td class="activity-date">${formattedDate}</td>
+                        </tr>`;
+                    tbody.innerHTML += tr;
+                });
+            }
+
+            let levelChartInstance = null;
+            function updateLevelChart(niveaux) {
+                const ctx = document.getElementById('level-chart').getContext('2d');
+                if (levelChartInstance) levelChartInstance.destroy();
+                
+                levelChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: niveaux.map(n => n.niveau_demande),
+                        datasets: [{
+                            label: 'Inscriptions',
+                            data: niveaux.map(n => n.count),
+                            backgroundColor: 'var(--primary-blue)',
+                            borderColor: 'var(--primary-blue)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, ticks: { color: 'var(--text-secondary)', stepSize: 1 } }, x: { ticks: { color: 'var(--text-secondary)' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            let servicesChartInstance = null;
+            function updateServicesChart(services) {
+                const ctx = document.getElementById('services-chart').getContext('2d');
+                if (servicesChartInstance) servicesChartInstance.destroy();
+
+                servicesChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Transport', 'Cantine'],
+                        datasets: [{
+                            data: [services.transport, services.cantine],
+                            backgroundColor: ['var(--info-cyan)', 'var(--accent-gold)'],
+                            borderColor: 'var(--bg-white)',
+                            borderWidth: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { color: 'var(--text-primary)' } } }
+                    }
+                });
+            }
+
+            fetchDashboardData();
+        });
+    </script>
+</body>
+</html> 

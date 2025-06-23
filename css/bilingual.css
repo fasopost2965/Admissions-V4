@@ -1,0 +1,411 @@
+/* ================================
+   Système Bilingue FR/AR - École La Victoire
+   ================================ */
+
+/* Import des polices arabes */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap');
+
+/* ================================
+   Switch de Langue
+   ================================ */
+.language-switch {
+    display: flex;
+    gap: 0.25rem;
+    margin-right: 1rem;
+    background: white;
+    border-radius: 20px;
+    padding: 0.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #64748b;
+    min-width: 40px;
+    text-align: center;
+}
+
+.lang-btn.active {
+    background: var(--primary-color, #003C71);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: scale(1.05);
+}
+
+.lang-btn:hover:not(.active) {
+    background: #f1f5f9;
+    color: var(--primary-color, #003C71);
+    transform: translateY(-1px);
+}
+
+/* ================================
+   Textes Bilingues
+   ================================ */
+.bilingual {
+    position: relative;
+}
+
+.bilingual .ar {
+    font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif;
+    font-weight: 500;
+    display: none;
+    line-height: 1.6;
+}
+
+.bilingual .fr {
+    display: inline;
+    line-height: 1.5;
+}
+
+/* Séparateur pour les labels bilingues côte à côte */
+.bilingual-inline .ar::before {
+    content: " • ";
+    color: #cbd5e0;
+    margin: 0 0.5rem;
+}
+
+/* ================================
+   Mode Français (par défaut)
+   ================================ */
+body {
+    direction: ltr;
+    text-align: left;
+}
+
+body .bilingual .fr {
+    display: inline;
+}
+
+body .bilingual .ar {
+    display: none;
+}
+
+/* ================================
+   Mode Arabe
+   ================================ */
+body.lang-ar {
+    font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif !important;
+    direction: rtl;
+    text-align: right;
+}
+
+body.lang-ar * {
+    font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif !important;
+}
+
+body.lang-ar .bilingual .fr {
+    display: none;
+}
+
+body.lang-ar .bilingual .ar {
+    display: inline;
+}
+
+/* Alignements spécifiques en arabe */
+body.lang-ar .form-label {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+body.lang-ar .choice-card {
+    text-align: right;
+}
+
+body.lang-ar .welcome-section {
+    text-align: right;
+}
+
+body.lang-ar .section-title {
+    text-align: right;
+}
+
+body.lang-ar .navigation-buttons {
+    flex-direction: row-reverse;
+}
+
+body.lang-ar button {
+    direction: rtl;
+}
+
+/* ================================
+   Gestion RTL (Right-to-Left)
+   ================================ */
+[dir="rtl"] .header-content {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .operator-info {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .language-switch {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+[dir="rtl"] .logo-section {
+    order: 2;
+}
+
+[dir="rtl"] .choice-cards {
+    direction: rtl;
+}
+
+[dir="rtl"] .form-row {
+    direction: rtl;
+}
+
+[dir="rtl"] .form-group {
+    text-align: right;
+}
+
+[dir="rtl"] .navigation-buttons {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .progress-wrapper {
+    direction: rtl;
+}
+
+[dir="rtl"] .progress-step {
+    direction: ltr;
+    text-align: center;
+}
+
+/* ================================
+   Formulaires en Arabe
+   ================================ */
+body.lang-ar select {
+    direction: rtl;
+    text-align: right;
+}
+
+body.lang-ar select option {
+    direction: rtl;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+body.lang-ar input[type="text"],
+body.lang-ar input[type="email"],
+body.lang-ar input[type="tel"],
+body.lang-ar textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+body.lang-ar input::placeholder {
+    text-align: right;
+    direction: rtl;
+}
+
+/* ================================
+   Stepper/Progress Bar en Arabe
+   ================================ */
+body.lang-ar .progress-bar {
+    direction: rtl;
+}
+
+body.lang-ar .step-label {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.85rem;
+}
+
+body.lang-ar .progress-line {
+    direction: ltr; /* La barre de progression reste LTR */
+}
+
+/* ================================
+   Services et Cartes en Arabe
+   ================================ */
+body.lang-ar .service-header {
+    flex-direction: row-reverse;
+}
+
+body.lang-ar .service-info {
+    text-align: right;
+}
+
+body.lang-ar .quartiers-grid {
+    direction: rtl;
+}
+
+body.lang-ar .quartier-badge {
+    text-align: center;
+    direction: rtl;
+}
+
+/* ================================
+   Navigation et Boutons
+   ================================ */
+body.lang-ar .btn {
+    direction: rtl;
+    justify-content: center;
+}
+
+/* Icônes qui doivent être inversées en RTL */
+[dir="rtl"] .fa-arrow-left::before {
+    content: "\f061"; /* Flèche droite */
+}
+
+[dir="rtl"] .fa-arrow-right::before {
+    content: "\f060"; /* Flèche gauche */
+}
+
+/* ================================
+   Responsive Mobile
+   ================================ */
+@media (max-width: 768px) {
+    .language-switch {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 999;
+    }
+    
+    .operator-info {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+    }
+    
+    [dir="rtl"] .operator-info {
+        align-items: flex-start;
+    }
+    
+    [dir="rtl"] .language-switch {
+        margin-left: 0.5rem;
+        margin-right: 0;
+    }
+    
+    /* Textes plus petits sur mobile */
+    body.lang-ar {
+        font-size: 0.95rem;
+    }
+    
+    body.lang-ar .welcome-title {
+        font-size: 1.5rem;
+    }
+    
+    body.lang-ar .choice-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* ================================
+   Animations et Transitions
+   ================================ */
+.bilingual .fr,
+.bilingual .ar {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation du changement de langue */
+body.switching-language .bilingual .fr,
+body.switching-language .bilingual .ar {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+/* ================================
+   États spéciaux
+   ================================ */
+/* Quand un élément est en cours de traduction */
+.translating {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Surbrillance pour les éléments traduits */
+.newly-translated {
+    animation: highlight 0.5s ease;
+}
+
+@keyframes highlight {
+    0% { background-color: rgba(0, 60, 113, 0.1); }
+    100% { background-color: transparent; }
+}
+
+/* ================================
+   Utilitaires
+   ================================ */
+.text-ar {
+    font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif !important;
+    direction: rtl;
+    text-align: right;
+}
+
+.text-fr {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Masquer selon la langue */
+.fr-only {
+    display: block;
+}
+
+.ar-only {
+    display: none;
+}
+
+body.lang-ar .fr-only {
+    display: none;
+}
+
+body.lang-ar .ar-only {
+    display: block;
+}
+
+/* ================================
+   Accessibilité
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+    .lang-btn,
+    .bilingual .fr,
+    .bilingual .ar {
+        transition: none;
+    }
+}
+
+/* Contraste élevé */
+@media (prefers-contrast: high) {
+    .lang-btn {
+        border: 2px solid currentColor;
+    }
+    
+    .lang-btn.active {
+        border-color: white;
+    }
+}
+
+/* ================================
+   Print Styles
+   ================================ */
+@media print {
+    .language-switch {
+        display: none;
+    }
+    
+    .bilingual .ar {
+        display: none !important;
+    }
+    
+    .bilingual .fr {
+        display: inline !important;
+    }
+    
+    body {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+} 

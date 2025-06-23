@@ -1,0 +1,278 @@
+/* =================================================================
+   Fichier CSS Principal - École La Victoire
+   Version: 2.0 (Dashboard)
+   ================================================================= */
+
+/* 1. Configuration Globale (Variables et Fonte)
+----------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-blue: #003C71;
+    --accent-gold: #FFC107; /* Or plus visible que le D700 */
+    --success-green: #10B981;
+    --info-cyan: #06B6D4;
+    --warning-orange: #F97316;
+    --bg-light: #F8FAFC;
+    --bg-white: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --border-color: #E2E8F0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Reset et Styles de Base
+----------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Composants Communs (Boutons, Cartes)
+----------------------------------------------------------------- */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+}
+
+.btn-primary:hover {
+    background-color: #002c52;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card {
+    background-color: var(--bg-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* 4. Structure du Dashboard
+----------------------------------------------------------------- */
+.dashboard-header {
+    background-color: var(--bg-white);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.school-branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 40px;
+}
+
+.school-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.school-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.welcome-message {
+    color: var(--text-secondary);
+}
+
+.welcome-message strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.dashboard-main {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* 5. Grilles de Contenu
+----------------------------------------------------------------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* 6. Éléments Spécifiques du Dashboard
+----------------------------------------------------------------- */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--bg-white);
+    flex-shrink: 0;
+}
+.icon-primary { background-color: var(--primary-blue); }
+.icon-success { background-color: var(--success-green); }
+.icon-info { background-color: var(--info-cyan); }
+.icon-warning { background-color: var(--warning-orange); }
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.chart-container {
+    grid-column: 1 / 3;
+}
+
+.activity-container {
+    grid-column: 1 / 4;
+}
+
+.chart-wrapper {
+    height: 320px;
+}
+.chart-wrapper-small {
+    height: 260px;
+    margin-top: 3rem; /* Espace pour la légende en bas */
+}
+
+/* Table d'Activité */
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activity-row {
+    border-bottom: 1px solid var(--border-color);
+}
+.activity-row:last-child {
+    border-bottom: none;
+}
+.activity-table td {
+    padding: 0.85rem 0.25rem;
+}
+.activity-name {
+    font-weight: 500;
+}
+.activity-level {
+    color: var(--text-secondary);
+}
+.activity-date {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.placeholder-text {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.error-message {
+    background-color: #fef2f2;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+}
+
+/* 7. Responsive Design
+----------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .chart-container, .activity-container {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .dashboard-main {
+        padding: 1rem;
+    }
+    .stats-grid, .dashboard-grid {
+        gap: 1rem;
+    }
+} 

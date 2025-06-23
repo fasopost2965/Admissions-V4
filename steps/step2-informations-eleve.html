@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 2 - Informations élève - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: </span>
+                <div class="operator-avatar">O</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 28.5%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">2</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">4</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">5</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Informations de l'élève</span>
+                <span class="ar">معلومات التلميذ</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Renseignements personnels - Année scolaire 2025-2026</span>
+                <span class="ar">المعلومات الشخصية - السنة الدراسية 2025-2026</span>
+            </p>
+        </div>
+
+        <form id="step2Form" class="fade-in">
+            <div class="form-container">
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label bilingual">
+                                <span class="fr">Prénom *</span>
+                                <span class="ar">الاسم الشخصي *</span>
+                            </label>
+                            <input type="text" class="form-control" id="studentFirstname" 
+                                   data-placeholder-fr="Prénom de l'élève"
+                                   data-placeholder-ar="الاسم الشخصي للتلميذ"
+                                   placeholder="Prénom de l'élève" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label bilingual">
+                                <span class="fr">Nom de famille *</span>
+                                <span class="ar">اسم العائلة *</span>
+                            </label>
+                            <input type="text" class="form-control" id="studentLastname" 
+                                   data-placeholder-fr="Nom de famille"
+                                   data-placeholder-ar="اسم العائلة"
+                                   placeholder="Nom de famille" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Date de naissance *</label>
+                            <input type="date" class="form-control" id="studentBirthdate" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Lieu de naissance *</label>
+                            <input type="text" class="form-control" id="studentBirthplace" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Sexe *</label>
+                            <select class="form-control" id="studentGender" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="M">Masculin</option>
+                                <option value="F">Féminin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nationalité *</label>
+                            <select class="form-control" id="studentNationality" required>
+                                <option value="">Sélectionnez la nationalité</option>
+                                <option value="Marocaine" selected>Marocaine</option>
+                                <option value="Française">Française</option>
+                                <option value="Espagnole">Espagnole</option>
+                                <option value="Algérienne">Algérienne</option>
+                                <option value="Tunisienne">Tunisienne</option>
+                                <option value="Belge">Belge</option>
+                                <option value="Canadienne">Canadienne</option>
+                                <option value="Américaine">Américaine</option>
+                                <option value="Britannique">Britannique</option>
+                                <option value="Allemande">Allemande</option>
+                                <option value="Italienne">Italienne</option>
+                                <option value="Portugaise">Portugaise</option>
+                                <option value="Néerlandaise">Néerlandaise</option>
+                                <option value="Suisse">Suisse</option>
+                                <option value="Turque">Turque</option>
+                                <option value="Sénégalaise">Sénégalaise</option>
+                                <option value="Ivoirienne">Ivoirienne</option>
+                                <option value="Malienne">Malienne</option>
+                                <option value="Guinéenne">Guinéenne</option>
+                                <option value="Mauritanienne">Mauritanienne</option>
+                                <option value="Autre">Autre nationalité</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="otherNationalityGroup" style="display: none;">
+                            <label class="form-label">Précisez la nationalité *</label>
+                            <input type="text" class="form-control" id="otherNationality" placeholder="Saisissez la nationalité">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Adresse *</label>
+                        <textarea class="form-control" id="studentAddress" rows="3" required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn">
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            setupValidation();
+            loadSavedData();
+            // Valider le formulaire après le chargement des données
+            setTimeout(validateForm, 100);
+        };
+
+        function setupValidation() {
+            const requiredFields = ['studentFirstname', 'studentLastname', 'studentBirthdate', 'studentBirthplace', 'studentGender', 'studentNationality', 'studentAddress'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.addEventListener('input', validateForm);
+                    field.addEventListener('change', validateForm);
+                }
+            });
+
+            // Gestion nationalité "Autre"
+            document.getElementById('studentNationality').addEventListener('change', function() {
+                const otherGroup = document.getElementById('otherNationalityGroup');
+                const otherField = document.getElementById('otherNationality');
+                
+                if (this.value === 'Autre') {
+                    otherGroup.style.display = 'block';
+                    otherField.required = true;
+                    otherField.addEventListener('input', validateForm);
+                } else {
+                    otherGroup.style.display = 'none';
+                    otherField.required = false;
+                    otherField.value = '';
+                }
+                validateForm();
+            });
+        }
+
+        function validateForm() {
+            const fields = ['studentFirstname', 'studentLastname', 'studentBirthdate', 'studentBirthplace', 'studentGender', 'studentNationality', 'studentAddress'];
+            let isValid = true;
+            
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field || !field.value.trim()) {
+                    isValid = false;
+                }
+            });
+
+            // Vérifier nationalité "Autre"
+            const nationality = document.getElementById('studentNationality').value;
+            if (nationality === 'Autre') {
+                const otherField = document.getElementById('otherNationality');
+                if (!otherField || !otherField.value.trim()) {
+                    isValid = false;
+                }
+            }
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = !isValid;
+                nextBtn.style.opacity = isValid ? '1' : '0.6';
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                ['studentFirstname', 'studentLastname', 'studentBirthdate', 'studentBirthplace', 'studentGender', 'studentNationality', 'studentAddress'].forEach(field => {
+                    if (data[field] && document.getElementById(field)) {
+                        document.getElementById(field).value = data[field];
+                    }
+                });
+                
+                // Gérer la nationalité "Autre" après le chargement
+                const nationality = document.getElementById('studentNationality').value;
+                if (nationality === 'Autre') {
+                    const otherGroup = document.getElementById('otherNationalityGroup');
+                    const otherField = document.getElementById('otherNationality');
+                    otherGroup.style.display = 'block';
+                    otherField.required = true;
+                    if (data.otherNationality) {
+                        otherField.value = data.otherNationality;
+                    }
+                }
+            }
+        }
+
+        function saveData() {
+            const saved = localStorage.getItem('inscriptionData');
+            const existingData = saved ? JSON.parse(saved) : {};
+            
+            const newData = {
+                studentFirstname: document.getElementById('studentFirstname').value,
+                studentLastname: document.getElementById('studentLastname').value,
+                studentBirthdate: document.getElementById('studentBirthdate').value,
+                studentBirthplace: document.getElementById('studentBirthplace').value,
+                studentGender: document.getElementById('studentGender').value,
+                studentNationality: document.getElementById('studentNationality').value,
+                studentAddress: document.getElementById('studentAddress').value
+            };
+            
+            // Sauvegarder aussi la nationalité "Autre" si applicable
+            if (document.getElementById('studentNationality').value === 'Autre') {
+                newData.otherNationality = document.getElementById('otherNationality').value;
+            }
+            
+            Object.assign(existingData, newData);
+            localStorage.setItem('inscriptionData', JSON.stringify(existingData));
+        }
+
+        function goBack() {
+            window.location.href = 'step1-type-inscription.html';
+        }
+
+        document.getElementById('step2Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Vérifier si tous les champs requis sont remplis
+            const fields = ['studentFirstname', 'studentLastname', 'studentBirthdate', 'studentBirthplace', 'studentGender', 'studentNationality', 'studentAddress'];
+            let isValid = true;
+            
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field || !field.value.trim()) {
+                    isValid = false;
+                    if (field) field.style.borderColor = '#ef4444';
+                } else {
+                    if (field) field.style.borderColor = '#d1d5db';
+                }
+            });
+
+            // Vérifier nationalité "Autre"
+            const nationality = document.getElementById('studentNationality').value;
+            if (nationality === 'Autre') {
+                const otherField = document.getElementById('otherNationality');
+                if (!otherField || !otherField.value.trim()) {
+                    isValid = false;
+                    if (otherField) otherField.style.borderColor = '#ef4444';
+                } else {
+                    if (otherField) otherField.style.borderColor = '#d1d5db';
+                }
+            }
+            
+            if (isValid) {
+                saveData();
+                window.location.href = 'step3-informations-parents.html';
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
+            }
+        });
+
+        document.getElementById('step2Form').addEventListener('change', saveData);
+        document.getElementById('step2Form').addEventListener('input', saveData);
+    </script>
+</body>
+</html> 

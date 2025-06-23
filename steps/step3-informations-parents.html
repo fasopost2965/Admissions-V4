@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 3 - Informations parents - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: </span>
+                <div class="operator-avatar">O</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 42.8%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">3</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">4</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">5</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Informations des parents</span>
+                <span class="ar">معلومات الوالدين</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Coordonnées des parents/tuteurs - Année scolaire 2025-2026</span>
+                <span class="ar">معلومات الوالدين/الأوصياء - السنة الدراسية 2025-2026</span>
+            </p>
+        </div>
+
+        <form id="step3Form" class="fade-in">
+            <div class="form-container">
+                <!-- Père -->
+                <div class="form-section">
+                    <h3 class="section-title">👨 Informations du père</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Prénom *</label>
+                            <input type="text" class="form-control" id="fatherFirstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nom de famille *</label>
+                            <input type="text" class="form-control" id="fatherLastname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Profession *</label>
+                            <input type="text" class="form-control" id="fatherProfession" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Téléphone *</label>
+                            <input type="tel" class="form-control" id="fatherPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="fatherEmail">
+                    </div>
+                </div>
+
+                <!-- Mère -->
+                <div class="form-section">
+                    <h3 class="section-title">👩 Informations de la mère</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Prénom *</label>
+                            <input type="text" class="form-control" id="motherFirstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nom de famille *</label>
+                            <input type="text" class="form-control" id="motherLastname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Profession *</label>
+                            <input type="text" class="form-control" id="motherProfession" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Téléphone *</label>
+                            <input type="tel" class="form-control" id="motherPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="motherEmail">
+                    </div>
+                </div>
+
+                <!-- Contact d'urgence -->
+                <div class="form-section">
+                    <h3 class="section-title bilingual">
+                        <span class="fr">🚨 Contact d'urgence</span>
+                        <span class="ar">🚨 جهة الاتصال في حالة الطوارئ</span>
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label bilingual">
+                            <span class="fr">Contact d'urgence *</span>
+                            <span class="ar">جهة الاتصال في حالة الطوارئ *</span>
+                        </label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="urgencyContact" value="pere" onchange="updateUrgencyContact()">
+                                <span class="radio-custom"></span>
+                                <span class="bilingual">
+                                    <span class="fr">Père</span>
+                                    <span class="ar">الأب</span>
+                                </span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="urgencyContact" value="mere" onchange="updateUrgencyContact()">
+                                <span class="radio-custom"></span>
+                                <span class="bilingual">
+                                    <span class="fr">Mère</span>
+                                    <span class="ar">الأم</span>
+                                </span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="urgencyContact" value="autre" onchange="updateUrgencyContact()">
+                                <span class="radio-custom"></span>
+                                <span class="bilingual">
+                                    <span class="fr">Autre personne</span>
+                                    <span class="ar">شخص آخر</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="urgencyOtherDetails" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label bilingual">
+                                    <span class="fr">Relation *</span>
+                                    <span class="ar">صلة القرابة *</span>
+                                </label>
+                                <select class="form-control" id="urgencyRelation">
+                                    <option value="" data-fr="Sélectionnez" data-ar="اختر">Sélectionnez</option>
+                                    <option value="Grand-père" data-fr="Grand-père" data-ar="الجد">Grand-père</option>
+                                    <option value="Grand-mère" data-fr="Grand-mère" data-ar="الجدة">Grand-mère</option>
+                                    <option value="Oncle" data-fr="Oncle" data-ar="العم/الخال">Oncle</option>
+                                    <option value="Tante" data-fr="Tante" data-ar="العمة/الخالة">Tante</option>
+                                    <option value="Frère/Sœur" data-fr="Frère/Sœur" data-ar="الأخ/الأخت">Frère/Sœur</option>
+                                    <option value="Ami de famille" data-fr="Ami de famille" data-ar="صديق العائلة">Ami de famille</option>
+                                    <option value="Voisin" data-fr="Voisin" data-ar="الجار">Voisin</option>
+                                    <option value="Autre" data-fr="Autre" data-ar="آخر">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nom complet *</label>
+                                <input type="text" class="form-control" id="urgencyName" placeholder="Nom et prénom">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Téléphone *</label>
+                            <input type="tel" class="form-control" id="urgencyPhone" placeholder="0X XX XX XX XX">
+                        </div>
+                    </div>
+
+                    <!-- Informations pré-remplies -->
+                    <div id="urgencyInfo" class="emergency-info" style="display: none;">
+                        <div class="info-card">
+                            <h4 id="urgencyTitle">Contact d'urgence :</h4>
+                            <p id="urgencyDetails"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn">
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            setupValidation();
+            loadSavedData();
+            // Valider le formulaire après le chargement des données
+            setTimeout(validateForm, 100);
+        };
+
+        function setupValidation() {
+            const requiredFields = [
+                'fatherFirstname', 'fatherLastname', 'fatherProfession', 'fatherPhone',
+                'motherFirstname', 'motherLastname', 'motherProfession', 'motherPhone'
+            ];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.addEventListener('input', validateForm);
+                    field.addEventListener('change', validateForm);
+                }
+            });
+        }
+
+        function updateUrgencyContact() {
+            const selectedContact = document.querySelector('input[name="urgencyContact"]:checked');
+            const urgencyOtherDetails = document.getElementById('urgencyOtherDetails');
+            const urgencyInfo = document.getElementById('urgencyInfo');
+            const urgencyTitle = document.getElementById('urgencyTitle');
+            const urgencyDetails = document.getElementById('urgencyDetails');
+            
+            if (!selectedContact) return;
+            
+            if (selectedContact.value === 'pere') {
+                const fatherName = document.getElementById('fatherFirstname').value + ' ' + document.getElementById('fatherLastname').value;
+                const fatherPhone = document.getElementById('fatherPhone').value;
+                
+                urgencyOtherDetails.style.display = 'none';
+                urgencyInfo.style.display = 'block';
+                urgencyTitle.textContent = 'Contact d\'urgence : Père';
+                urgencyDetails.innerHTML = `<strong>${fatherName}</strong><br>Téléphone: ${fatherPhone}`;
+                
+            } else if (selectedContact.value === 'mere') {
+                const motherName = document.getElementById('motherFirstname').value + ' ' + document.getElementById('motherLastname').value;
+                const motherPhone = document.getElementById('motherPhone').value;
+                
+                urgencyOtherDetails.style.display = 'none';
+                urgencyInfo.style.display = 'block';
+                urgencyTitle.textContent = 'Contact d\'urgence : Mère';
+                urgencyDetails.innerHTML = `<strong>${motherName}</strong><br>Téléphone: ${motherPhone}`;
+                
+            } else if (selectedContact.value === 'autre') {
+                urgencyOtherDetails.style.display = 'block';
+                urgencyInfo.style.display = 'none';
+                
+                // Ajouter les événements pour les nouveaux champs
+                ['urgencyRelation', 'urgencyName', 'urgencyPhone'].forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field) {
+                        field.addEventListener('input', validateForm);
+                        field.addEventListener('change', validateForm);
+                    }
+                });
+            }
+            
+            validateForm();
+        }
+
+        function validateForm() {
+            const requiredFields = [
+                'fatherFirstname', 'fatherLastname', 'fatherProfession', 'fatherPhone',
+                'motherFirstname', 'motherLastname', 'motherProfession', 'motherPhone'
+            ];
+            
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field || !field.value.trim()) {
+                    isValid = false;
+                }
+            });
+
+            // Vérifier le contact d'urgence
+            const selectedContact = document.querySelector('input[name="urgencyContact"]:checked');
+            if (!selectedContact) {
+                isValid = false;
+            } else if (selectedContact.value === 'autre') {
+                // Vérifier les champs "autre"
+                const urgencyFields = ['urgencyRelation', 'urgencyName', 'urgencyPhone'];
+                urgencyFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field || !field.value.trim()) {
+                        isValid = false;
+                    }
+                });
+            }
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = !isValid;
+                nextBtn.style.opacity = isValid ? '1' : '0.6';
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // Charger les champs parents
+                const parentFields = [
+                    'fatherFirstname', 'fatherLastname', 'fatherProfession', 'fatherPhone', 'fatherEmail',
+                    'motherFirstname', 'motherLastname', 'motherProfession', 'motherPhone', 'motherEmail'
+                ];
+                
+                parentFields.forEach(field => {
+                    if (data[field] && document.getElementById(field)) {
+                        document.getElementById(field).value = data[field];
+                    }
+                });
+                
+                // Charger les champs d'urgence avec les bons IDs
+                const urgencyFields = [
+                    {key: 'urgencyRelation', id: 'urgencyRelation'},
+                    {key: 'urgencyName', id: 'urgencyName'},
+                    {key: 'urgencyPhone', id: 'urgencyPhone'}
+                ];
+                
+                urgencyFields.forEach(field => {
+                    if (data[field.key] && document.getElementById(field.id)) {
+                        document.getElementById(field.id).value = data[field.key];
+                    }
+                });
+                
+                // Restaurer le contact d'urgence sélectionné
+                if (data.urgencyContactType) {
+                    const radioButton = document.querySelector(`input[name="urgencyContact"][value="${data.urgencyContactType}"]`);
+                    if (radioButton) {
+                        radioButton.checked = true;
+                        // Déclencher le changement pour afficher les champs appropriés
+                        radioButton.dispatchEvent(new Event('change'));
+                    }
+                }
+            }
+        }
+
+        function saveData() {
+            const saved = localStorage.getItem('inscriptionData');
+            const existingData = saved ? JSON.parse(saved) : {};
+            
+            const newData = {};
+            
+            // Sauvegarder les champs parents avec vérification d'existence
+            const parentFields = [
+                'fatherFirstname', 'fatherLastname', 'fatherProfession', 'fatherPhone', 'fatherEmail',
+                'motherFirstname', 'motherLastname', 'motherProfession', 'motherPhone', 'motherEmail'
+            ];
+            
+            parentFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    newData[fieldId] = field.value;
+                }
+            });
+            
+            // Sauvegarder les champs d'urgence avec les bons IDs
+            const urgencyFields = [
+                {id: 'urgencyRelation', key: 'urgencyRelation'},
+                {id: 'urgencyName', key: 'urgencyName'},
+                {id: 'urgencyPhone', key: 'urgencyPhone'}
+            ];
+            
+            urgencyFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (element) {
+                    newData[field.key] = element.value;
+                }
+            });
+            
+            // Sauvegarder le contact d'urgence sélectionné
+            const selectedContact = document.querySelector('input[name="urgencyContact"]:checked');
+            if (selectedContact) {
+                newData.urgencyContactType = selectedContact.value;
+            }
+            
+            Object.assign(existingData, newData);
+            localStorage.setItem('inscriptionData', JSON.stringify(existingData));
+        }
+
+        function goBack() {
+            window.location.href = 'step2-informations-eleve.html';
+        }
+
+        document.getElementById('step3Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Vérifier si tous les champs requis sont remplis
+            const requiredFields = [
+                'fatherFirstname', 'fatherLastname', 'fatherProfession', 'fatherPhone',
+                'motherFirstname', 'motherLastname', 'motherProfession', 'motherPhone'
+            ];
+            
+            let isValid = true;
+            let missingFields = [];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field || !field.value.trim()) {
+                    isValid = false;
+                    if (field) {
+                        field.style.borderColor = '#ef4444';
+                        const label = document.querySelector(`label[for="${fieldId}"]`) || 
+                                    field.previousElementSibling;
+                        if (label) missingFields.push(label.textContent.replace(' *', ''));
+                    }
+                } else {
+                    if (field) field.style.borderColor = '#d1d5db';
+                }
+            });
+
+            // Vérifier le contact d'urgence
+            const selectedContact = document.querySelector('input[name="urgencyContact"]:checked');
+            if (!selectedContact) {
+                isValid = false;
+                missingFields.push('Contact d\'urgence');
+            } else if (selectedContact.value === 'autre') {
+                const urgencyFields = ['urgencyRelation', 'urgencyName', 'urgencyPhone'];
+                urgencyFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field || !field.value.trim()) {
+                        isValid = false;
+                        if (field) field.style.borderColor = '#ef4444';
+                    } else {
+                        if (field) field.style.borderColor = '#d1d5db';
+                    }
+                });
+            }
+            
+            if (isValid) {
+                saveData();
+                window.location.href = 'step4-services.html';
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires : ' + missingFields.join(', '));
+            }
+        });
+
+        document.getElementById('step3Form').addEventListener('change', saveData);
+        document.getElementById('step3Form').addEventListener('input', saveData);
+    </script>
+
+    <style>
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            background: #f8fafc;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .emergency-info {
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .info-card h4 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: #374151;
+        }
+
+        @media (max-width: 768px) {
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

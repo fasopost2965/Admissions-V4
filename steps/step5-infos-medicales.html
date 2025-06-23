@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 5 - Informations médicales - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: </span>
+                <div class="operator-avatar">O</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 66%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">5</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Informations médicales</span>
+                <span class="ar">المعلومات الطبية</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Renseignements de santé (tous les champs sont optionnels)</span>
+                <span class="ar">المعلومات الصحية (جميع الحقول اختيارية)</span>
+            </p>
+        </div>
+
+        <form id="step5Form" class="fade-in">
+            <div class="form-container">
+                <div class="medical-note">
+                    <div class="note-icon">ℹ️</div>
+                    <div class="note-content">
+                        <h4>Information importante</h4>
+                        <p>Toutes les informations médicales sont facultatives. Vous pouvez laisser vides les champs qui ne vous concernent pas et passer directement à l'étape suivante.</p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">🩸 Groupe sanguin</label>
+                        <select class="form-control" id="groupeSanguin">
+                            <option value="">Non renseigné</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">🏥 Médecin traitant</label>
+                        <input type="text" class="form-control" id="medecinTraitant" placeholder="Nom du médecin traitant">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">🚨 Allergies connues</label>
+                    <textarea class="form-control" id="allergies" rows="3" placeholder="Mentionnez toute allergie alimentaire, médicamenteuse ou autre..."></textarea>
+                    <small class="form-help">Exemples : allergie aux arachides, lactose, médicaments spécifiques, etc.</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">💊 Médicaments réguliers</label>
+                    <textarea class="form-control" id="medicaments" rows="3" placeholder="Médicaments pris régulièrement (nom, dosage, fréquence)..."></textarea>
+                    <small class="form-help">Si l'élève prend des médicaments régulièrement, précisez lesquels et à quelle fréquence</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">🏥 Maladies chroniques ou conditions particulières</label>
+                    <textarea class="form-control" id="maladiesChroniques" rows="3" placeholder="Asthme, diabète, épilepsie, troubles de l'attention, etc..."></textarea>
+                    <small class="form-help">Toute condition médicale dont l'école devrait être informée</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📞 Personne à contacter en cas d'urgence</label>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="contactUrgenceNom" placeholder="Nom complet">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="contactUrgenceTel" placeholder="Numéro de téléphone">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="contactUrgenceLien" placeholder="Lien de parenté avec l'élève">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📝 Observations particulières</label>
+                    <textarea class="form-control" id="observationsMedicales" rows="4" placeholder="Toute information supplémentaire que vous jugez importante pour la santé et le bien-être de l'élève à l'école..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📄 Documents médicaux (optionnel)</label>
+                    <input type="file" class="form-control" id="documentsMedicaux" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                    <small class="form-help">Certificats médicaux, ordonnances, ou tout document utile (PDF, JPG, PNG max 5MB chacun)</small>
+                </div>
+
+                <!-- Autorisation d'urgence -->
+                <div class="authorization-section">
+                    <h4>🚑 Autorisation en cas d'urgence</h4>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autorisationSoins" checked>
+                            <span class="checkmark"></span>
+                            J'autorise l'école à faire appel aux services de secours et à prendre toute mesure nécessaire en cas d'urgence médicale concernant mon enfant.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn">
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        // Vérifier si l'utilisateur est connecté
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            // Charger les données sauvegardées si elles existent
+            loadSavedData();
+        };
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // Charger les données médicales
+                const fields = [
+                    'groupeSanguin', 'medecinTraitant', 'allergies', 'medicaments', 
+                    'maladiesChroniques', 'contactUrgenceNom', 'contactUrgenceTel', 
+                    'contactUrgenceLien', 'observationsMedicales', 'autorisationSoins'
+                ];
+                
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field] !== undefined) {
+                        if (element.type === 'checkbox') {
+                            element.checked = data[field];
+                        } else {
+                            element.value = data[field];
+                        }
+                    }
+                });
+            }
+        }
+
+        function goBack() {
+            window.location.href = 'step4-services.html';
+        }
+
+        function saveData() {
+            // Sauvegarder les données avec vérification d'existence
+            const saved = localStorage.getItem('inscriptionData');
+            const existingData = saved ? JSON.parse(saved) : {};
+            
+            const medicalFields = [
+                'groupeSanguin', 'medecinTraitant', 'allergies', 'medicaments', 
+                'maladiesChroniques', 'contactUrgenceNom', 'contactUrgenceTel', 
+                'contactUrgenceLien', 'observationsMedicales'
+            ];
+            
+            const data = {};
+            
+            medicalFields.forEach(fieldId => {
+                const element = document.getElementById(fieldId);
+                if (element) {
+                    data[fieldId] = element.value;
+                }
+            });
+            
+            // Checkbox autorisation
+            const autorisationElement = document.getElementById('autorisationSoins');
+            if (autorisationElement) {
+                data.autorisationSoins = autorisationElement.checked;
+            }
+            
+            Object.assign(existingData, data);
+            localStorage.setItem('inscriptionData', JSON.stringify(existingData));
+        }
+
+        document.getElementById('step5Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Sauvegarder les données
+            saveData();
+            
+            // Aller à l'étape suivante
+            window.location.href = 'step6-fournitures.html';
+        });
+
+        // Sauvegarder automatiquement lors des changements
+        document.getElementById('step5Form').addEventListener('change', saveData);
+        document.getElementById('step5Form').addEventListener('input', saveData);
+    </script>
+
+    <style>
+        .medical-note {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border: 1px solid #bbdefb;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .note-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .note-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .note-content p {
+            color: #555;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .form-help {
+            color: var(--dark-gray);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .authorization-section {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        .authorization-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .form-control[type="file"] {
+            padding: 0.5rem;
+        }
+
+        textarea.form-control {
+            min-height: 80px;
+            resize: vertical;
+        }
+    </style>
+</body>
+</html>

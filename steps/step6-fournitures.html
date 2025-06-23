@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 6 - Fournitures scolaires - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: Fatima Z.</span>
+                <div class="operator-avatar">FZ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 83%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Liste des fournitures scolaires</span>
+                <span class="ar">قائمة اللوازم المدرسية</span>
+            </h1>
+            <p class="welcome-subtitle bilingual" id="levelSubtitle">
+                <span class="fr">Pour le niveau [Niveau] - Année scolaire 2025-2026</span>
+                <span class="ar">للمستوى [Niveau] - السنة الدراسية 2025-2026</span>
+            </p>
+        </div>
+
+        <form id="step6Form" class="fade-in">
+            <div class="form-container">
+                <!-- Informations générales -->
+                <div class="supplies-info">
+                    <div class="info-icon">📋</div>
+                    <div class="info-content">
+                        <h4>Information importante</h4>
+                        <p>Cochez les fournitures que vous avez déjà achetées. Cette liste vous sera remise en PDF pour faciliter vos achats.</p>
+                    </div>
+                    <div class="supplies-actions">
+                        <button type="button" class="btn btn-outline" id="selectAllBtn" onclick="toggleSelectAll()">
+                            <span id="selectAllIcon">☑️</span>
+                            <span id="selectAllText" class="bilingual">
+                                <span class="fr">Sélectionner tout</span>
+                                <span class="ar">تحديد الكل</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Liste des fournitures dynamique -->
+                <div id="suppliesList" class="supplies-categories">
+                    <!-- Le contenu sera généré dynamiquement -->
+                </div>
+
+                <!-- Résumé -->
+                <div class="supplies-summary" id="suppliesSummary">
+                    <h4>📊 Résumé</h4>
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalItems">0</span>
+                            <span class="stat-label">Total articles</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="acquiredItems">0</span>
+                            <span class="stat-label">Déjà acquis</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="remainingItems">0</span>
+                            <span class="stat-label">Reste à acheter</span>
+                        </div>
+                    </div>
+                    <div class="progress-supplies">
+                        <div class="progress-bar-supplies">
+                            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0% complété</span>
+                    </div>
+                </div>
+
+                <!-- Notes personnelles -->
+                <div class="form-group">
+                    <label class="form-label">📝 Notes personnelles sur les fournitures</label>
+                    <textarea class="form-control" id="notesFournitures" rows="3" placeholder="Remarques, préférences de marques, ou toute information utile pour l'achat des fournitures..."></textarea>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn">
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        let currentLevel = '';
+        let suppliesData = {};
+
+        // Données des fournitures par niveau - COMPLÈTES selon spécifications École La Victoire
+        const suppliesByLevel = {
+            'PS': {
+                name: 'Petite Section',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable adapté à la taille de l\'enfant',
+                            'Trousse simple',
+                            'Crayons de couleur (12 couleurs)',
+                            'Feutres lavables (12 couleurs)',
+                            'Colle en bâton (2 unités)',
+                            'Ciseaux à bout rond',
+                            'Ardoise blanche + 2 feutres'
+                        ]
+                    },
+                    {
+                        name: '🎨 Matériel d\'éveil',
+                        items: [
+                            'Pâte à modeler (4 pots)',
+                            'Pinceaux (taille moyenne)',
+                            'Tablier de peinture',
+                            'Craies grasses'
+                        ]
+                    },
+                    {
+                        name: '🧴 Hygiène et confort',
+                        items: [
+                            '2 boîtes de mouchoirs en papier',
+                            '1 paquet de lingettes humides',
+                            '1 tablier en plastique',
+                            '1 gobelet marqué au nom',
+                            '1 coussin pour la sieste',
+                            '1 change complet',
+                            '2 photos d\'identité'
+                        ]
+                    }
+                ]
+            },
+            'MS': {
+                name: 'Moyenne Section',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable adapté',
+                            '2 boîtes de mouchoirs',
+                            'Tablier de peinture',
+                            'Crayons de couleur (12)',
+                            'Colle en bâton (2)',
+                            'Ciseaux à bout rond',
+                            'Ardoise + 2 feutres',
+                            '2 photos d\'identité'
+                        ]
+                    }
+                ]
+            },
+            'GS': {
+                name: 'Grande Section',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable solide',
+                            'Trousse',
+                            'Crayons de couleur (18)',
+                            'Feutres (12)',
+                            'Colle en bâton (3)',
+                            'Ciseaux',
+                            'Ardoise + feutres',
+                            'Cahier de dessin',
+                            'Crayons HB (3)',
+                            'Gomme'
+                        ]
+                    }
+                ]
+            },
+            'CP': {
+                name: 'CP',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable robuste',
+                            'Trousse double',
+                            'Crayons HB (10)',
+                            'Gomme blanche',
+                            'Taille-crayon',
+                            'Règle 20cm',
+                            'Ciseaux',
+                            'Colle (5)',
+                            'Stylos bleus (5)',
+                            'Stylos rouges (2)',
+                            'Cahiers grands carreaux (5)',
+                            'Protège-cahiers',
+                            'Crayons de couleur (24)'
+                        ]
+                    }
+                ]
+            },
+            'CE1': {
+                name: 'CE1',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable',
+                            'Trousse double',
+                            'Crayons HB (10)',
+                            'Gomme',
+                            'Règle 30cm',
+                            'Ciseaux',
+                            'Colle (6)',
+                            'Surligneurs (3)',
+                            'Stylos bleus (6)',
+                            'Stylos rouges (3)',
+                            'Cahiers 24x32 (6)',
+                            'Agenda scolaire',
+                            'Équerre',
+                            'Calculatrice simple'
+                        ]
+                    }
+                ]
+            },
+            'CE2': {
+                name: 'CE2',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable résistant',
+                            'Trousse double',
+                            'Crayons HB (12)',
+                            'Gomme',
+                            'Règle 30cm',
+                            'Ciseaux qualité',
+                            'Colle (8)',
+                            'Surligneurs (4)',
+                            'Correcteur',
+                            'Stylos bleus (8)',
+                            'Stylos rouges (4)',
+                            'Cahiers 24x32 (8)',
+                            'Agenda scolaire',
+                            'Équerre',
+                            'Compas',
+                            'Calculatrice'
+                        ]
+                    }
+                ]
+            },
+            'CM1': {
+                name: 'CM1',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable solide',
+                            'Trousse compartiments',
+                            'Crayons HB (15)',
+                            'Porte-mines + mines',
+                            'Gomme',
+                            'Règle 30cm graduée',
+                            'Équerre',
+                            'Compas',
+                            'Ciseaux',
+                            'Colle (10)',
+                            'Surligneurs (5)',
+                            'Correcteur',
+                            'Stylos bleus (10)',
+                            'Stylos rouges (5)',
+                            'Stylos verts (3)',
+                            'Cahiers 24x32 (10)',
+                            'Agenda scolaire',
+                            'Calculatrice scientifique'
+                        ]
+                    }
+                ]
+            },
+            'CM2': {
+                name: 'CM2',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire de base',
+                        items: [
+                            'Cartable grande capacité',
+                            'Trousse multiple',
+                            'Crayons HB (15)',
+                            'Porte-mines + mines',
+                            'Gomme',
+                            'Règle 30cm',
+                            'Équerre',
+                            'Compas précision',
+                            'Rapporteur',
+                            'Ciseaux',
+                            'Colle (12)',
+                            'Surligneurs (6)',
+                            'Correcteur (3)',
+                            'Stylos bleus (12)',
+                            'Stylos rouges (6)',
+                            'Stylos verts (4)',
+                            'Cahiers 24x32 (12)',
+                            'Agenda scolaire',
+                            'Calculatrice scientifique',
+                            'Dictionnaire français'
+                        ]
+                    }
+                ]
+            },
+            '6ème année': {
+                name: '6ème année',
+                categories: [
+                    {
+                        name: '📚 Matériel scolaire complet',
+                        items: [
+                            'Cartable grande capacité',
+                            'Trousse multiple',
+                            'Crayons HB (20)',
+                            'Porte-mines + mines',
+                            'Gomme',
+                            'Règle 30cm',
+                            'Équerre',
+                            'Compas précision',
+                            'Rapporteur',
+                            'Ciseaux',
+                            'Colle (15)',
+                            'Surligneurs (8)',
+                            'Correcteur (4)',
+                            'Stylos bleus (15)',
+                            'Stylos rouges (8)',
+                            'Stylos verts (5)',
+                            'Stylos noirs (5)',
+                            'Cahiers 24x32 (15)',
+                            'Agenda scolaire',
+                            'Calculatrice scientifique',
+                            'Dictionnaire français',
+                            'Atlas géographique'
+                        ]
+                    }
+                ]
+            },
+            'CP': {
+                name: 'CP',
+                categories: [
+                    {
+                        name: '📚 Matériel de base',
+                        items: [
+                            'Cartable robuste',
+                            'Trousse double',
+                            'Crayons de papier HB (10 unités)',
+                            'Gomme blanche',
+                            'Taille-crayon avec réservoir',
+                            'Règle 20 cm',
+                            'Ciseaux à bout rond',
+                            'Colle en bâton (5 unités)'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et lecture',
+                        items: [
+                            'Stylos bleus (5 unités)',
+                            'Stylos rouges (2 unités)',
+                            'Stylos verts (2 unités)',
+                            'Cahiers grands carreaux 17x22 (5 unités)',
+                            'Cahier de texte',
+                            'Protège-cahiers (différentes couleurs)'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques',
+                        items: [
+                            'Cahier petits carreaux (3 unités)',
+                            'Équerre',
+                            'Matériel de numération'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts et loisirs',
+                        items: [
+                            'Crayons de couleur (24 couleurs)',
+                            'Feutres (18 couleurs)',
+                            'Pinceaux',
+                            'Cahier de dessin A4',
+                            'Feuilles blanches A4'
+                        ]
+                    }
+                ]
+            },
+            'CE1': {
+                name: 'CE1',
+                categories: [
+                    {
+                        name: '📚 Matériel de base',
+                        items: [
+                            'Cartable ou sac à dos',
+                            'Trousse double',
+                            'Crayons de papier HB (10 unités)',
+                            'Gomme blanche',
+                            'Taille-crayon avec réservoir',
+                            'Règle 30 cm',
+                            'Ciseaux',
+                            'Colle en bâton (6 unités)',
+                            'Surligneurs (3 couleurs)'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et français',
+                        items: [
+                            'Stylos bleus (6 unités)',
+                            'Stylos rouges (3 unités)',
+                            'Stylos verts (3 unités)',
+                            'Cahiers grands carreaux 24x32 (6 unités)',
+                            'Cahier de brouillon',
+                            'Agenda scolaire',
+                            'Protège-cahiers assortis'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques',
+                        items: [
+                            'Cahiers petits carreaux (4 unités)',
+                            'Équerre',
+                            'Compas simple',
+                            'Calculatrice simple'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts plastiques',
+                        items: [
+                            'Crayons de couleur (24 couleurs)',
+                            'Feutres (24 couleurs)',
+                            'Pinceaux variés',
+                            'Cahier de dessin A4',
+                            'Papier canson blanc'
+                        ]
+                    }
+                ]
+            },
+            'CE2': {
+                name: 'CE2',
+                categories: [
+                    {
+                        name: '📚 Matériel de base',
+                        items: [
+                            'Cartable ou sac à dos résistant',
+                            'Trousse double compartiments',
+                            'Crayons de papier HB (12 unités)',
+                            'Gomme blanche',
+                            'Taille-crayon métallique',
+                            'Règle 30 cm graduée',
+                            'Ciseaux de bonne qualité',
+                            'Colle en bâton (8 unités)',
+                            'Surligneurs (4 couleurs)',
+                            'Correcteur blanc'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et français',
+                        items: [
+                            'Stylos bleus (8 unités)',
+                            'Stylos rouges (4 unités)',
+                            'Stylos verts (4 unités)',
+                            'Stylos noirs (2 unités)',
+                            'Cahiers grands carreaux 24x32 (8 unités)',
+                            'Cahier de brouillon (2 unités)',
+                            'Agenda scolaire',
+                            'Protège-cahiers transparents'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques',
+                        items: [
+                            'Cahiers petits carreaux (5 unités)',
+                            'Équerre 21 cm',
+                            'Compas',
+                            'Rapporteur 180°',
+                            'Calculatrice 4 opérations'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts et créativité',
+                        items: [
+                            'Crayons de couleur (36 couleurs)',
+                            'Feutres (24 couleurs)',
+                            'Pinceaux (différentes tailles)',
+                            'Cahier de dessin A4',
+                            'Papier coloré',
+                            'Feuilles blanches A4 (500 feuilles)'
+                        ]
+                    }
+                ]
+            },
+            'CM1': {
+                name: 'CM1',
+                categories: [
+                    {
+                        name: '📚 Matériel de base',
+                        items: [
+                            'Cartable ou sac à dos de qualité',
+                            'Trousse à compartiments',
+                            'Crayons de papier HB (15 unités)',
+                            'Gomme blanche de qualité',
+                            'Taille-crayon métallique avec réservoir',
+                            'Règle 30 cm incassable',
+                            'Ciseaux de précision',
+                            'Colle en bâton (10 unités)',
+                            'Surligneurs (5 couleurs)',
+                            'Correcteur blanc (2 unités)'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et français',
+                        items: [
+                            'Stylos bleus (10 unités)',
+                            'Stylos rouges (5 unités)',
+                            'Stylos verts (5 unités)',
+                            'Stylos noirs (3 unités)',
+                            'Cahiers grands carreaux 24x32 (10 unités)',
+                            'Cahiers de brouillon (3 unités)',
+                            'Agenda scolaire de qualité',
+                            'Protège-cahiers transparents (10 unités)',
+                            'Classeur A4 (2 unités)',
+                            'Feuilles mobiles grands carreaux'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques et géométrie',
+                        items: [
+                            'Cahiers petits carreaux (6 unités)',
+                            'Équerre 21 cm',
+                            'Compas de précision',
+                            'Rapporteur 180°',
+                            'Calculatrice scientifique simple',
+                            'Papier millimétré'
+                        ]
+                    },
+                    {
+                        name: '🌍 Sciences et géographie',
+                        items: [
+                            'Cahiers travaux pratiques (3 unités)',
+                            'Feuilles de calque',
+                            'Atlas géographique',
+                            'Loupe (optionnelle)'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts plastiques',
+                        items: [
+                            'Crayons de couleur professionnels (36 couleurs)',
+                            'Feutres fins et épais',
+                            'Pinceaux variés',
+                            'Cahier de dessin A4',
+                            'Papier canson couleurs',
+                            'Pochettes plastiques A4'
+                        ]
+                    }
+                ]
+            },
+            'CM2': {
+                name: 'CM2',
+                categories: [
+                    {
+                        name: '📚 Matériel de base',
+                        items: [
+                            'Cartable ou sac à dos robuste',
+                            'Trousse professionnelle',
+                            'Crayons de papier HB (20 unités)',
+                            'Gomme blanche de qualité',
+                            'Taille-crayon métallique professionnel',
+                            'Règle 30 cm graduation précise',
+                            'Ciseaux de précision',
+                            'Colle en bâton (12 unités)',
+                            'Surligneurs (6 couleurs)',
+                            'Correcteur blanc (3 unités)',
+                            'Perforatrice individuelle'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et français',
+                        items: [
+                            'Stylos bleus (12 unités)',
+                            'Stylos rouges (6 unités)',
+                            'Stylos verts (6 unités)',
+                            'Stylos noirs (4 unités)',
+                            'Cahiers grands carreaux 24x32 (12 unités)',
+                            'Cahiers de brouillon (4 unités)',
+                            'Agenda scolaire professionnel',
+                            'Protège-cahiers transparents (12 unités)',
+                            'Classeurs A4 (3 unités)',
+                            'Feuilles mobiles grands carreaux (500 feuilles)',
+                            'Intercalaires (3 jeux)'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques et géométrie',
+                        items: [
+                            'Cahiers petits carreaux (8 unités)',
+                            'Équerre 21 cm professionnelle',
+                            'Compas de précision avec mine',
+                            'Rapporteur 180° et 360°',
+                            'Calculatrice scientifique',
+                            'Papier millimétré (plusieurs formats)',
+                            'Gabarit géométrique'
+                        ]
+                    },
+                    {
+                        name: '🌍 Sciences et géographie',
+                        items: [
+                            'Cahiers travaux pratiques (4 unités)',
+                            'Feuilles de calque A4',
+                            'Atlas géographique détaillé',
+                            'Loupe',
+                            'Rapporteur géographique'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts plastiques',
+                        items: [
+                            'Crayons de couleur aquarellables',
+                            'Feutres professionnels',
+                            'Pinceaux variés de qualité',
+                            'Cahier de dessin A3',
+                            'Papier canson formats variés',
+                            'Pochettes plastiques A4 (20 unités)',
+                            'Porte-vues (2 unités)'
+                        ]
+                    },
+                    {
+                        name: '💻 Préparation au collège',
+                        items: [
+                            'Clé USB 8 Go minimum',
+                            'Dictionnaire français',
+                            'Dictionnaire français-arabe',
+                            'Bescherelle conjugaison'
+                        ]
+                    }
+                ]
+            },
+            '6EME': {
+                name: '6ème',
+                categories: [
+                    {
+                        name: '📚 Matériel de base collège',
+                        items: [
+                            'Sac à dos renforcé grand format',
+                            'Trousse professionnelle à compartiments',
+                            'Crayons de papier HB (25 unités)',
+                            'Gomme blanche de qualité',
+                            'Taille-crayon métallique avec réservoir',
+                            'Règle 30 cm incassable',
+                            'Ciseaux de précision',
+                            'Colle en bâton (15 unités)',
+                            'Surligneurs (8 couleurs)',
+                            'Correcteur blanc (5 unités)',
+                            'Perforatrice 2 trous',
+                            'Agrafeuse + agrafes'
+                        ]
+                    },
+                    {
+                        name: '✏️ Écriture et littérature',
+                        items: [
+                            'Stylos bleus (15 unités)',
+                            'Stylos rouges (8 unités)',
+                            'Stylos verts (8 unités)',
+                            'Stylos noirs (6 unités)',
+                            'Cahiers grands carreaux 24x32 (15 unités)',
+                            'Cahiers de brouillon (5 unités)',
+                            'Agenda scolaire de qualité',
+                            'Protège-cahiers transparents (15 unités)',
+                            'Classeurs A4 grand format (5 unités)',
+                            'Feuilles mobiles grands carreaux (1000 feuilles)',
+                            'Intercalaires plastifiés (5 jeux)',
+                            'Pochettes transparentes (50 unités)'
+                        ]
+                    },
+                    {
+                        name: '🔢 Mathématiques',
+                        items: [
+                            'Cahiers petits carreaux (10 unités)',
+                            'Équerre 21 cm professionnelle',
+                            'Compas de précision avec accessoires',
+                            'Rapporteur 180° et 360°',
+                            'Calculatrice scientifique collège',
+                            'Papier millimétré A4',
+                            'Kit de géométrie complet',
+                            'Feuilles de papier calque A4'
+                        ]
+                    },
+                    {
+                        name: '🌍 Sciences et géographie',
+                        items: [
+                            'Cahiers travaux pratiques (6 unités)',
+                            'Blouse de laboratoire',
+                            'Lunettes de protection',
+                            'Atlas géographique complet',
+                            'Mappemonde (optionnelle)',
+                            'Loupe professionnelle'
+                        ]
+                    },
+                    {
+                        name: '🌐 Langues étrangères',
+                        items: [
+                            'Cahiers spéciaux langues (4 unités)',
+                            'Dictionnaire français-anglais',
+                            'Dictionnaire français-espagnol (selon choix)',
+                            'CD audio ou accès plateformes (selon professeur)'
+                        ]
+                    },
+                    {
+                        name: '🎨 Arts et créativité',
+                        items: [
+                            'Crayons de couleur professionnels (48 couleurs)',
+                            'Feutres fins et moyens',
+                            'Pinceaux variés professionnels',
+                            'Cahier de dessin A3',
+                            'Papier canson couleurs variées',
+                            'Portfolio A3 pour ranger les œuvres'
+                        ]
+                    },
+                    {
+                        name: '💻 Numérique et technologie',
+                        items: [
+                            'Clé USB 16 Go minimum',
+                            'Dictionnaire électronique (optionnel)',
+                            'Tablette ou ordinateur portable (selon établissement)',
+                            'Casque audio'
+                        ]
+                    },
+                    {
+                        name: '📖 Références et documentation',
+                        items: [
+                            'Dictionnaire français Larousse',
+                            'Dictionnaire français-arabe complet',
+                            'Bescherelle conjugaison et orthographe',
+                            'Atlas historique',
+                            'Carnet de liaison école-famille'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Vérifier si l'utilisateur est connecté
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger les données et initialiser
+            loadSavedData();
+            initializeSupplies();
+        };
+
+        function initializeSupplies() {
+            // Récupérer le niveau depuis localStorage
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentLevel = data.schoolLevel;
+                
+                if (currentLevel && suppliesByLevel[currentLevel]) {
+                    displaySupplies(currentLevel);
+                    updateSubtitle(currentLevel);
+                } else {
+                    // Niveau non trouvé, afficher message d'erreur
+                    document.getElementById('suppliesList').innerHTML = `
+                        <div class="error-message">
+                            <h4>⚠️ Niveau non défini</h4>
+                            <p>Veuillez retourner à l'étape 1 pour sélectionner un niveau scolaire.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function updateSubtitle(level) {
+            const levelData = suppliesByLevel[level];
+            if (levelData) {
+                document.getElementById('levelSubtitle').textContent = 
+                    `Pour le niveau ${levelData.name} - Année scolaire 2025-2026`;
+            }
+        }
+
+        function displaySupplies(level) {
+            const levelData = suppliesByLevel[level];
+            const suppliesContainer = document.getElementById('suppliesList');
+            
+            let html = '';
+            
+            levelData.categories.forEach((category, categoryIndex) => {
+                html += `
+                    <div class="supply-category">
+                        <h4 class="category-title">${category.name}</h4>
+                        <div class="supply-items">
+                `;
+                
+                category.items.forEach((item, itemIndex) => {
+                    const itemId = `item_${categoryIndex}_${itemIndex}`;
+                    const isChecked = suppliesData[itemId] ? 'checked' : '';
+                    
+                    html += `
+                        <div class="supply-item">
+                            <label class="supply-label">
+                                <input type="checkbox" id="${itemId}" ${isChecked} onchange="updateSuppliesData('${itemId}', this.checked)">
+                                <span class="checkmark"></span>
+                                <span class="item-text">${item}</span>
+                            </label>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            suppliesContainer.innerHTML = html;
+            updateSummary();
+        }
+
+        function updateSuppliesData(itemId, isChecked) {
+            suppliesData[itemId] = isChecked;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const totalItems = document.querySelectorAll('.supply-item input[type="checkbox"]').length;
+            const acquiredItems = document.querySelectorAll('.supply-item input[type="checkbox"]:checked').length;
+            const remainingItems = totalItems - acquiredItems;
+            const percentage = totalItems > 0 ? Math.round((acquiredItems / totalItems) * 100) : 0;
+            
+            document.getElementById('totalItems').textContent = totalItems;
+            document.getElementById('acquiredItems').textContent = acquiredItems;
+            document.getElementById('remainingItems').textContent = remainingItems;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = percentage + '% complété';
+            
+            // Mettre à jour le bouton "Sélectionner tout"
+            updateSelectAllButton();
+        }
+
+        function toggleSelectAll() {
+            const checkboxes = document.querySelectorAll('.supply-item input[type="checkbox"]');
+            const checkedBoxes = document.querySelectorAll('.supply-item input[type="checkbox"]:checked');
+            const allChecked = checkboxes.length === checkedBoxes.length;
+            
+            checkboxes.forEach(checkbox => {
+                const wasChecked = checkbox.checked;
+                checkbox.checked = !allChecked;
+                
+                // Mettre à jour suppliesData
+                if (wasChecked !== checkbox.checked) {
+                    suppliesData[checkbox.id] = checkbox.checked;
+                }
+            });
+            
+            updateSummary();
+        }
+
+        function updateSelectAllButton() {
+            const checkboxes = document.querySelectorAll('.supply-item input[type="checkbox"]');
+            const checkedBoxes = document.querySelectorAll('.supply-item input[type="checkbox"]:checked');
+            const allChecked = checkboxes.length === checkedBoxes.length && checkboxes.length > 0;
+            
+            const selectAllBtn = document.getElementById('selectAllBtn');
+            const selectAllText = document.getElementById('selectAllText');
+            const selectAllIcon = document.getElementById('selectAllIcon');
+            
+            if (selectAllBtn && selectAllText && selectAllIcon) {
+                if (allChecked) {
+                    selectAllText.textContent = 'Désélectionner tout';
+                    selectAllIcon.textContent = '☐';
+                    selectAllBtn.classList.add('btn-selected');
+                } else {
+                    selectAllText.textContent = 'Sélectionner tout';
+                    selectAllIcon.textContent = '☑️';
+                    selectAllBtn.classList.remove('btn-selected');
+                }
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // Charger les données des fournitures
+                if (data.fournitures) {
+                    suppliesData = data.fournitures;
+                }
+                
+                // Charger les notes
+                if (data.notesFournitures) {
+                    document.getElementById('notesFournitures').value = data.notesFournitures;
+                }
+            }
+        }
+
+        function goBack() {
+            window.location.href = 'step5-infos-medicales.html';
+        }
+
+        document.getElementById('step6Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer la liste des fournitures sélectionnées
+            const selectedSupplies = [];
+            const checkboxes = document.querySelectorAll('.supply-item input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                const itemText = checkbox.closest('.supply-label').querySelector('.item-text').textContent;
+                selectedSupplies.push(itemText);
+            });
+            
+            // Sauvegarder les données
+            const data = {
+                fournitures: suppliesData,
+                notesFournitures: document.getElementById('notesFournitures').value
+            };
+            
+            // Sauvegarder séparément les données de fournitures pour le PDF
+            const suppliesDataForPDF = {
+                selectedSupplies: selectedSupplies,
+                totalItems: document.querySelectorAll('.supply-item input[type="checkbox"]').length,
+                acquiredItems: selectedSupplies.length,
+                level: currentLevel
+            };
+            localStorage.setItem('suppliesData', JSON.stringify(suppliesDataForPDF));
+            
+            // Mettre à jour localStorage
+            const saved = localStorage.getItem('inscriptionData');
+            const existingData = saved ? JSON.parse(saved) : {};
+            Object.assign(existingData, data);
+            localStorage.setItem('inscriptionData', JSON.stringify(existingData));
+            
+            // Aller à l'étape suivante
+            window.location.href = 'step7-validation.html';
+        });
+    </script>
+
+    <style>
+        .supplies-info {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            border: 1px solid #c3e6c3;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .supplies-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline.btn-selected {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-outline.btn-selected:hover {
+            background: #059669;
+            border-color: #059669;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-content p {
+            color: #555;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .supplies-categories {
+            margin-bottom: 2rem;
+        }
+
+        .supply-category {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .category-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .supply-items {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .supply-item {
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .supply-item:hover {
+            background: var(--light-gray);
+        }
+
+        .supply-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .supply-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .supply-label input[type="checkbox"]:checked + .checkmark + .item-text {
+            color: var(--success-color);
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .supplies-summary {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .supplies-summary h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .progress-supplies {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-bar-supplies {
+            flex: 1;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color) 0%, var(--primary-color) 100%);
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            white-space: nowrap;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #dc3545;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .error-message h4 {
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-supplies {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .progress-text {
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 4 - Services - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: Fatima Z.</span>
+                <div class="operator-avatar">FZ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 50%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">4</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">5</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Services scolaires</span>
+                <span class="ar">الخدمات المدرسية</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Sélectionnez les services souhaités - Année scolaire 2025-2026</span>
+                <span class="ar">اختر الخدمات المرغوبة - السنة الدراسية 2025-2026</span>
+            </p>
+        </div>
+
+        <form id="step4Form" class="fade-in">
+            <div class="services-container">
+                <!-- Transport Card -->
+                <div class="service-box transport-service">
+                    <div class="service-header">
+                        <div class="service-icon">🚌</div>
+                        <div class="service-info">
+                            <h3 class="bilingual">
+                                <span class="fr">Transport scolaire</span>
+                                <span class="ar">النقل المدرسي</span>
+                            </h3>
+                            <p class="bilingual">
+                                <span class="fr">Service de bus dans tous les quartiers de Tétouan</span>
+                                <span class="ar">خدمة الحافلات في جميع أحياء تطوان</span>
+                            </p>
+                        </div>
+                        <label class="service-switch">
+                            <input type="checkbox" id="transportCheckbox" onchange="toggleTransport()">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div id="quartiersSelection" class="quartiers-container" style="display: none;">
+                        <h4 class="quartiers-title bilingual">
+                            <span class="fr">📍 Sélectionnez votre quartier :</span>
+                            <span class="ar">📍 اختر حيك :</span>
+                        </h4>
+                        <div class="quartiers-grid">
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="centre-ville">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Centre-ville</span>
+                                    <span class="ar">وسط المدينة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="mellah">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Mellah</span>
+                                    <span class="ar">الملاح</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="ensanche">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Ensanche</span>
+                                    <span class="ar">الإنسانش</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="touilaa">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Touilaa</span>
+                                    <span class="ar">الطويلة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="samsa">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Samsa</span>
+                                    <span class="ar">سمسة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="mhannech">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">M'hannech</span>
+                                    <span class="ar">المحنش</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="sidi-talha">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Sidi Talha</span>
+                                    <span class="ar">سيدي طلحة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="sania">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Sania</span>
+                                    <span class="ar">السانية</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="kouia">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Koui'a</span>
+                                    <span class="ar">القويعة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="sidi-mandri">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Sidi Mandri</span>
+                                    <span class="ar">سيدي المندري</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="borouj">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Borouj</span>
+                                    <span class="ar">البروج</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="federation">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Fédération</span>
+                                    <span class="ar">الفيدرالية</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="al-massira">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Al Massira</span>
+                                    <span class="ar">المسيرة</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="salam">
+                                <span class="quartier-badge bilingual">
+                                    <span class="fr">Salam</span>
+                                    <span class="ar">السلام</span>
+                                </span>
+                            </label>
+                            <label class="quartier-option">
+                                <input type="radio" name="quartier" value="autre">
+                                <span class="quartier-badge special bilingual">
+                                    <span class="fr">Autre quartier</span>
+                                    <span class="ar">حي آخر</span>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group" id="autreQuartierGroup" style="display: none; margin-top: 1rem;">
+                            <input type="text" class="form-control" id="autreQuartier" placeholder="Précisez le quartier">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cantine Card -->
+                <div class="service-box cantine-service">
+                    <div class="service-header">
+                        <div class="service-icon">🍽️</div>
+                        <div class="service-info">
+                            <h3 class="bilingual">
+                                <span class="fr">Cantine scolaire</span>
+                                <span class="ar">المطعم المدرسي</span>
+                            </h3>
+                            <p class="bilingual">
+                                <span class="fr">Service de restauration avec repas équilibrés</span>
+                                <span class="ar">خدمة الطعام مع وجبات متوازنة</span>
+                            </p>
+                        </div>
+                        <label class="service-switch">
+                            <input type="checkbox" id="cantineCheckbox" onchange="toggleCantine()">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="service-benefits" id="cantineBenefits" style="display: none;">
+                        <div class="benefits-list">
+                            <div class="benefit-item bilingual">
+                                <span class="benefit-icon">✅</span>
+                                <span class="fr">Repas équilibrés préparés sur place</span>
+                                <span class="ar">وجبات متوازنة محضرة في المكان</span>
+                            </div>
+                            <div class="benefit-item bilingual">
+                                <span class="benefit-icon">✅</span>
+                                <span class="fr">Menu varié et adapté aux enfants</span>
+                                <span class="ar">قائمة طعام متنوعة ومناسبة للأطفال</span>
+                            </div>
+                            <div class="benefit-item bilingual">
+                                <span class="benefit-icon">✅</span>
+                                <span class="fr">Surveillance pendant le repas</span>
+                                <span class="ar">مراقبة أثناء تناول الطعام</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Récapitulatif des services -->
+                <div class="services-summary" id="servicesSummary" style="display: none;">
+                    <h4>📋 Récapitulatif des services sélectionnés</h4>
+                    <div class="summary-items">
+                        <div class="summary-item" id="transportSummary"></div>
+                        <div class="summary-item" id="cantineSummary"></div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" id="transportScolaire" name="transportScolaire" value="false">
+            <input type="hidden" id="cantineScolaire" name="cantineScolaire" value="false">
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn">
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        let selectedTransport = false;
+        let selectedCantine = false;
+
+        // Vérifier si l'utilisateur est connecté
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            // Charger les données sauvegardées si elles existent
+            loadSavedData();
+        };
+
+        function toggleTransport() {
+            const checkbox = document.getElementById('transportCheckbox');
+            const quartiersSelection = document.getElementById('quartiersSelection');
+            
+            selectedTransport = checkbox.checked;
+            document.getElementById('transportScolaire').value = checkbox.checked;
+            
+            if (checkbox.checked) {
+                quartiersSelection.style.display = 'block';
+                setupQuartierSelection();
+            } else {
+                quartiersSelection.style.display = 'none';
+                document.getElementById('autreQuartierGroup').style.display = 'none';
+                // Désélectionner tous les quartiers
+                document.querySelectorAll('input[name="quartier"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                document.getElementById('autreQuartier').value = '';
+            }
+            
+            updateSummary();
+        }
+
+        function toggleCantine() {
+            const checkbox = document.getElementById('cantineCheckbox');
+            const benefits = document.getElementById('cantineBenefits');
+            
+            selectedCantine = checkbox.checked;
+            document.getElementById('cantineScolaire').value = checkbox.checked;
+            
+            if (checkbox.checked) {
+                benefits.style.display = 'block';
+            } else {
+                benefits.style.display = 'none';
+            }
+            
+            updateSummary();
+        }
+
+        function setupQuartierSelection() {
+            document.querySelectorAll('input[name="quartier"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const autreGroup = document.getElementById('autreQuartierGroup');
+                    
+                    if (this.value === 'autre') {
+                        autreGroup.style.display = 'block';
+                        document.getElementById('autreQuartier').required = true;
+                    } else {
+                        autreGroup.style.display = 'none';
+                        document.getElementById('autreQuartier').required = false;
+                        document.getElementById('autreQuartier').value = '';
+                    }
+                    updateSummary();
+                });
+            });
+        }
+
+        // Gestion du changement de quartier
+        document.addEventListener('DOMContentLoaded', function() {
+            const quartierSelect = document.getElementById('transportQuartier');
+            const autreGroup = document.getElementById('autreQuartierGroup');
+            
+            quartierSelect.addEventListener('change', function() {
+                if (this.value === 'autre') {
+                    autreGroup.style.display = 'block';
+                    document.getElementById('autreQuartier').required = true;
+                } else {
+                    autreGroup.style.display = 'none';
+                    document.getElementById('autreQuartier').required = false;
+                    document.getElementById('autreQuartier').value = '';
+                }
+                updateSummary();
+            });
+        });
+
+        function updateSummary() {
+            const summaryDiv = document.getElementById('servicesSummary');
+            const transportSummary = document.getElementById('transportSummary');
+            const cantineSummary = document.getElementById('cantineSummary');
+            
+            let hasServices = false;
+            
+            // Transport
+            if (selectedTransport) {
+                const selectedQuartier = document.querySelector('input[name="quartier"]:checked');
+                const quartier = selectedQuartier ? selectedQuartier.value : '';
+                const autreQuartierField = document.getElementById('autreQuartier');
+                const autreQuartier = autreQuartierField ? autreQuartierField.value : '';
+                let quartierText = '';
+                
+                if (quartier === 'autre' && autreQuartier) {
+                    quartierText = autreQuartier;
+                } else if (quartier && quartier !== 'autre') {
+                    quartierText = quartier.charAt(0).toUpperCase() + quartier.slice(1).replace('-', ' ');
+                }
+                
+                transportSummary.innerHTML = `🚌 <strong>Transport scolaire:</strong> Oui${quartierText ? ` - Quartier: ${quartierText}` : ''}`;
+                hasServices = true;
+            } else {
+                transportSummary.innerHTML = `🚌 <strong>Transport scolaire:</strong> Non`;
+            }
+            
+            // Cantine
+            if (selectedCantine) {
+                cantineSummary.innerHTML = `🍽️ <strong>Cantine scolaire:</strong> Oui`;
+                hasServices = true;
+            } else {
+                cantineSummary.innerHTML = `🍽️ <strong>Cantine scolaire:</strong> Non`;
+            }
+            
+            // Afficher le récapitulatif si au moins un service est sélectionné
+            if (selectedTransport !== null && selectedCantine !== null) {
+                summaryDiv.style.display = 'block';
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                if (data.transportScolaire !== undefined) {
+                    // Charger le transport
+                    const transportCheckbox = document.getElementById('transportCheckbox');
+                    if (transportCheckbox) {
+                        transportCheckbox.checked = data.transportScolaire;
+                        selectedTransport = data.transportScolaire;
+                        document.getElementById('transportScolaire').value = data.transportScolaire;
+                        
+                        if (data.transportScolaire) {
+                            document.getElementById('quartiersSelection').style.display = 'block';
+                            setupQuartierSelection();
+                            
+                            // Restaurer le quartier sélectionné
+                            if (data.transportQuartier) {
+                                const quartierRadio = document.querySelector(`input[name="quartier"][value="${data.transportQuartier}"]`);
+                                if (quartierRadio) {
+                                    quartierRadio.checked = true;
+                                    
+                                    // Si c'est "autre", afficher le champ et restaurer la valeur
+                                    if (data.transportQuartier === 'autre') {
+                                        const autreGroup = document.getElementById('autreQuartierGroup');
+                                        const autreField = document.getElementById('autreQuartier');
+                                        if (autreGroup && autreField) {
+                                            autreGroup.style.display = 'block';
+                                            if (data.autreQuartier) {
+                                                autreField.value = data.autreQuartier;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if (data.cantineScolaire !== undefined) {
+                    // Charger la cantine
+                    const cantineCheckbox = document.getElementById('cantineCheckbox');
+                    if (cantineCheckbox) {
+                        cantineCheckbox.checked = data.cantineScolaire;
+                        selectedCantine = data.cantineScolaire;
+                        document.getElementById('cantineScolaire').value = data.cantineScolaire;
+                        
+                        if (data.cantineScolaire) {
+                            const benefits = document.getElementById('cantineBenefits');
+                            if (benefits) {
+                                benefits.style.display = 'block';
+                            }
+                        }
+                    }
+                }
+                
+                updateSummary();
+            }
+        }
+
+        function goBack() {
+            window.location.href = 'step3-informations-parents.html';
+        }
+
+        document.getElementById('step4Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer le quartier sélectionné
+            const selectedQuartier = document.querySelector('input[name="quartier"]:checked');
+            const autreQuartierField = document.getElementById('autreQuartier');
+            
+            // Sauvegarder les données
+            const data = {
+                transportScolaire: selectedTransport,
+                transportQuartier: selectedQuartier ? selectedQuartier.value : null,
+                autreQuartier: autreQuartierField ? autreQuartierField.value : '',
+                cantineScolaire: selectedCantine
+            };
+            
+            // Mettre à jour localStorage
+            const saved = localStorage.getItem('inscriptionData');
+            const existingData = saved ? JSON.parse(saved) : {};
+            Object.assign(existingData, data);
+            localStorage.setItem('inscriptionData', JSON.stringify(existingData));
+            
+            // Aller à l'étape suivante
+            window.location.href = 'step5-infos-medicales.html';
+        });
+    </script>
+
+    <style>
+        .services-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .service-box {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .transport-service {
+            border-left: 6px solid #3b82f6;
+        }
+
+        .cantine-service {
+            border-left: 6px solid #10b981;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        .service-info h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .service-info p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .service-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .service-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .switch-slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .switch-slider:before {
+            transform: translateX(26px);
+        }
+
+        .quartiers-container {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quartiers-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quartiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .quartier-option {
+            display: block;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .quartier-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .quartier-badge {
+            display: block;
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            color: #374151;
+        }
+
+        .quartier-badge:hover {
+            border-color: var(--primary-color);
+            background: #f0f9ff;
+            color: var(--primary-color);
+        }
+
+        .quartier-option input[type="radio"]:checked + .quartier-badge {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .quartier-badge.special {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .quartier-option input[type="radio"]:checked + .quartier-badge.special {
+            background: #f59e0b;
+            color: white;
+            border-color: #f59e0b;
+        }
+
+        .service-benefits {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f0fdf4;
+            border-radius: 12px;
+            border: 2px solid #16a34a;
+            animation: slideDown 0.3s ease;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #166534;
+            font-weight: 500;
+        }
+
+        .benefit-icon {
+            font-size: 1.2rem;
+            color: #16a34a;
+        }
+
+        .services-summary {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .services-summary h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .quartiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-container {
+                gap: 1.5rem;
+            }
+
+            .service-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

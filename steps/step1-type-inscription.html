@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 1 - Type d'inscription - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: Fatima Z.</span>
+                <div class="operator-avatar">FZ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 0%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">1</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">2</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">4</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">5</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">6</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Type d'inscription</span>
+                <span class="ar">نوع التسجيل</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Choisissez le type d'inscription - Année scolaire 2025-2026</span>
+                <span class="ar">اختر نوع التسجيل - السنة الدراسية 2025-2026</span>
+            </p>
+        </div>
+
+        <form id="step1Form" class="fade-in">
+            <div class="choice-cards">
+                <div class="choice-card" data-type="nouvelle" onclick="selectType('nouvelle')">
+                    <div class="choice-icon">🎒</div>
+                    <h3 class="choice-title bilingual">
+                        <span class="fr">Nouvelle inscription</span>
+                        <span class="ar">تسجيل جديد</span>
+                    </h3>
+                    <p class="choice-description bilingual">
+                        <span class="fr">Pour un nouvel élève qui s'inscrit pour la première fois à l'école</span>
+                        <span class="ar">للتلميذ الجديد الذي يسجل لأول مرة في المدرسة</span>
+                    </p>
+                </div>
+
+                <div class="choice-card" data-type="reinscription" onclick="selectType('reinscription')">
+                    <div class="choice-icon">📚</div>
+                    <h3 class="choice-title bilingual">
+                        <span class="fr">Réinscription</span>
+                        <span class="ar">إعادة التسجيل</span>
+                    </h3>
+                    <p class="choice-description bilingual">
+                        <span class="fr">Pour un élève déjà inscrit qui continue ses études à l'école</span>
+                        <span class="ar">للتلميذ المسجل الذي يواصل دراسته في المدرسة</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-container" id="detailsForm" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label bilingual">
+                            <span class="fr">Niveau scolaire *</span>
+                            <span class="ar">المستوى الدراسي *</span>
+                        </label>
+                        <select class="form-control" id="schoolLevel" required>
+                            <option value="" data-fr="Sélectionnez le niveau" data-ar="اختر المستوى">Sélectionnez le niveau</option>
+                            <optgroup label="🧸 Maternelle / رياض الأطفال">
+                                <option value="PS" data-fr="Petite Section (PS)" data-ar="القسم الصغير">Petite Section (PS)</option>
+                                <option value="MS" data-fr="Moyenne Section (MS)" data-ar="القسم المتوسط">Moyenne Section (MS)</option>
+                                <option value="GS" data-fr="Grande Section (GS)" data-ar="القسم الكبير">Grande Section (GS)</option>
+                            </optgroup>
+                            <optgroup label="📚 Primaire / الابتدائي">
+                                <option value="CP" data-fr="CP" data-ar="السنة الأولى">CP</option>
+                                <option value="CE1" data-fr="CE1" data-ar="السنة الثانية">CE1</option>
+                                <option value="CE2" data-fr="CE2" data-ar="السنة الثالثة">CE2</option>
+                                <option value="CM1" data-fr="CM1" data-ar="السنة الرابعة">CM1</option>
+                                <option value="CM2" data-fr="CM2" data-ar="السنة الخامسة">CM2</option>
+                                <option value="6EME" data-fr="6ème année" data-ar="السنة السادسة">6ème année</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="previousSchoolGroup" style="display: none;">
+                    <label class="form-label bilingual">
+                        <span class="fr">École précédente</span>
+                        <span class="ar">المدرسة السابقة</span>
+                    </label>
+                    <input type="text" class="form-control" id="previousSchool" 
+                           data-placeholder-fr="Nom de l'établissement précédent"
+                           data-placeholder-ar="اسم المؤسسة السابقة"
+                           placeholder="Nom de l'établissement précédent">
+                </div>
+            </div>
+
+            <input type="hidden" id="inscriptionType" name="inscriptionType" value="">
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="nextBtn" disabled>
+                    <span class="fr">Suivant</span>
+                    <span class="ar">التالي</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script>
+        let selectedType = '';
+
+        // Variables globales pour la langue
+        let currentLanguage = 'fr';
+
+        // Vérifier si l'utilisateur est connecté
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            // Charger les données sauvegardées si elles existent
+            loadSavedData();
+        };
+
+        // Système de gestion des langues
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Mettre à jour les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang' + lang.charAt(0).toUpperCase() + lang.slice(1)).classList.add('active');
+            
+            // Direction du texte
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.className = 'lang-' + lang;
+            
+            // Afficher/masquer les textes selon la langue
+            if (lang === 'ar') {
+                document.querySelectorAll('.fr').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.ar').forEach(el => el.style.display = 'inline');
+            } else {
+                document.querySelectorAll('.fr').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('.ar').forEach(el => el.style.display = 'none');
+            }
+            
+            // Mettre à jour les placeholders
+            updatePlaceholders(lang);
+            updateSelectOptions(lang);
+        }
+
+        function updatePlaceholders(lang) {
+            const inputs = document.querySelectorAll('input[data-placeholder-fr]');
+            inputs.forEach(input => {
+                const placeholder = lang === 'ar' ? input.getAttribute('data-placeholder-ar') : input.getAttribute('data-placeholder-fr');
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+        }
+
+        function updateSelectOptions(lang) {
+            const options = document.querySelectorAll('option[data-fr]');
+            options.forEach(option => {
+                const text = lang === 'ar' ? option.getAttribute('data-ar') : option.getAttribute('data-fr');
+                if (text) {
+                    option.textContent = text;
+                }
+            });
+        }
+
+        function selectType(type) {
+            selectedType = type;
+            
+            // Retirer la sélection de toutes les cartes
+            document.querySelectorAll('.choice-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Ajouter la sélection à la carte cliquée
+            document.querySelector(`[data-type="${type}"]`).classList.add('selected');
+            
+            // Mettre à jour le champ caché
+            document.getElementById('inscriptionType').value = type;
+            
+            // Afficher le formulaire de détails
+            document.getElementById('detailsForm').style.display = 'block';
+            
+            // Afficher/masquer le champ école précédente
+            const previousSchoolGroup = document.getElementById('previousSchoolGroup');
+            if (type === 'nouvelle') {
+                previousSchoolGroup.style.display = 'none';
+                document.getElementById('previousSchool').required = false;
+            } else if (type === 'reinscription') {
+                previousSchoolGroup.style.display = 'block';
+                document.getElementById('previousSchool').required = true;
+                document.querySelector('#previousSchoolGroup label').textContent = 'École précédente *';
+            }
+            
+            // Activer le bouton suivant si tous les champs requis sont remplis
+            validateForm();
+        }
+
+        function validateForm() {
+            const type = document.getElementById('inscriptionType').value;
+            const level = document.getElementById('schoolLevel').value;
+            const previousSchool = document.getElementById('previousSchool').value;
+            
+            let isValid = type && level;
+            
+            // Vérifier l'école précédente si nécessaire
+            if (type === 'reinscription' && !previousSchool) {
+                isValid = false;
+            }
+            
+            document.getElementById('nextBtn').disabled = !isValid;
+        }
+
+        // Écouter les changements dans les champs
+        document.getElementById('schoolLevel').addEventListener('change', validateForm);
+        document.getElementById('previousSchool').addEventListener('input', validateForm);
+
+        function goBack() {
+            window.location.href = '../welcome.html';
+        }
+
+        function saveData() {
+            const data = {
+                inscriptionType: document.getElementById('inscriptionType').value,
+                schoolLevel: document.getElementById('schoolLevel').value,
+                previousSchool: document.getElementById('previousSchool').value
+            };
+            
+            localStorage.setItem('inscriptionData', JSON.stringify(data));
+        }
+
+        function loadSavedData() {
+            const savedData = localStorage.getItem('inscriptionData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                
+                if (data.inscriptionType) {
+                    selectType(data.inscriptionType);
+                    document.getElementById('schoolLevel').value = data.schoolLevel || '';
+                    document.getElementById('previousSchool').value = data.previousSchool || '';
+                    validateForm();
+                }
+            }
+        }
+
+        // Soumettre le formulaire
+        document.getElementById('step1Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!document.getElementById('nextBtn').disabled) {
+                saveData();
+                window.location.href = 'step2-informations-eleve.html';
+            }
+        });
+
+        // Sauvegarder automatiquement les données lors des changements
+        document.getElementById('step1Form').addEventListener('change', saveData);
+    </script>
+
+    <style>
+        /* Système bilingue */
+        .language-switch {
+            display: flex;
+            gap: 0.25rem;
+            margin-right: 1rem;
+            background: white;
+            border-radius: 20px;
+            padding: 0.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #64748b;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        /* Textes bilingues */
+        .bilingual {
+            position: relative;
+        }
+
+        .bilingual .ar {
+            font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif;
+            font-weight: 500;
+            display: none;
+        }
+
+        .bilingual .fr {
+            display: inline;
+        }
+
+        /* Mode arabe */
+        body.lang-ar {
+            font-family: 'Tajawal', 'Cairo', 'Amiri', sans-serif;
+        }
+
+        body.lang-ar .bilingual .fr {
+            display: none;
+        }
+
+        body.lang-ar .bilingual .ar {
+            display: inline;
+        }
+
+        body.lang-ar .form-label {
+            text-align: right;
+        }
+
+        body.lang-ar .choice-card {
+            text-align: right;
+        }
+
+        body.lang-ar .navigation-buttons {
+            flex-direction: row-reverse;
+        }
+
+        /* Gestion RTL pour l'arabe */
+        [dir="rtl"] .header-content {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .operator-info {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .language-switch {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+
+        [dir="rtl"] .choice-cards {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .form-row {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .navigation-buttons {
+            flex-direction: row-reverse;
+        }
+
+        /* Amélioration des select bilingues */
+        body.lang-ar select option {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.lang-ar input {
+            text-align: right;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .language-switch {
+                margin-right: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .operator-info {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+            
+            [dir="rtl"] .operator-info {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</body>
+</html> 

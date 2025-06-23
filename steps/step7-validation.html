@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étape 7 - Validation - École La Victoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bilingual.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <div class="logo-title">École La Victoire</div>
+                    <div class="logo-subtitle">مدرسة النصر</div>
+                </div>
+            </div>
+            <div class="operator-info">
+                <div class="language-switch">
+                    <button onclick="setLanguage('fr')" class="lang-btn active" id="langFr">FR</button>
+                    <button onclick="setLanguage('ar')" class="lang-btn" id="langAr">عر</button>
+                </div>
+                <span id="operatorName">Opératrice: </span>
+                <div class="operator-avatar">O</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-line">
+                <div class="progress-line-active" style="width: 100%;"></div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Type</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Élève</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Parents</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Services</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Médical</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle completed">✓</div>
+                <div class="step-label">Fournitures</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle active">7</div>
+                <div class="step-label">Validation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title bilingual">
+                <span class="fr">Validation du dossier d'inscription</span>
+                <span class="ar">التحقق من ملف التسجيل</span>
+            </h1>
+            <p class="welcome-subtitle bilingual">
+                <span class="fr">Vérifiez toutes les informations avant la validation finale</span>
+                <span class="ar">تحقق من جميع المعلومات قبل التأكيد النهائي</span>
+            </p>
+        </div>
+
+        <form id="step7Form" class="fade-in">
+            <div class="form-container">
+                <!-- Numéro de dossier -->
+                <div class="dossier-header">
+                    <div class="dossier-number">
+                        <h3>📁 Numéro de dossier: <span id="dossierNumber">LV-2025-XXXX</span></h3>
+                        <p>École La Victoire - Tétouan, Maroc - <a href="https://groupelavictoire.com" target="_blank">groupelavictoire.com</a></p>
+                    </div>
+                    <div class="dossier-status">
+                        <span class="status-badge pending">En attente de validation</span>
+                    </div>
+                </div>
+
+                <!-- Récapitulatif par sections -->
+                <div class="summary-sections">
+                    <!-- Section 1: Type d'inscription -->
+                    <div class="summary-section">
+                        <h4 class="section-title">📝 Type d'inscription</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Type:</span>
+                                <span class="info-value" id="summaryType">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Niveau scolaire:</span>
+                                <span class="info-value" id="summaryLevel">-</span>
+                            </div>
+                            <div class="info-row" id="previousSchoolRow" style="display: none;">
+                                <span class="info-label">École précédente:</span>
+                                <span class="info-value" id="summaryPreviousSchool">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Élève -->
+                    <div class="summary-section">
+                        <h4 class="section-title">👦 Informations de l'élève</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Nom complet:</span>
+                                <span class="info-value" id="summaryStudentName">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Date de naissance:</span>
+                                <span class="info-value" id="summaryBirthdate">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Lieu de naissance:</span>
+                                <span class="info-value" id="summaryBirthplace">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Sexe:</span>
+                                <span class="info-value" id="summaryGender">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Nationalité:</span>
+                                <span class="info-value" id="summaryNationality">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Parents -->
+                    <div class="summary-section">
+                        <h4 class="section-title">👨‍👩‍👦 Informations des parents</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Père:</span>
+                                <span class="info-value" id="summaryFather">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Téléphone père:</span>
+                                <span class="info-value" id="summaryFatherPhone">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Mère:</span>
+                                <span class="info-value" id="summaryMother">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Téléphone mère:</span>
+                                <span class="info-value" id="summaryMotherPhone">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Services (NOUVELLE) -->
+                    <div class="summary-section">
+                        <h4 class="section-title">🚌 Services scolaires</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Transport scolaire:</span>
+                                <span class="info-value" id="summaryTransport">-</span>
+                            </div>
+                            <div class="info-row" id="transportQuartierRow" style="display: none;">
+                                <span class="info-label">Quartier:</span>
+                                <span class="info-value" id="summaryTransportQuartier">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Cantine scolaire:</span>
+                                <span class="info-value" id="summaryCantine">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: Médical -->
+                    <div class="summary-section">
+                        <h4 class="section-title">🏥 Informations médicales</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Groupe sanguin:</span>
+                                <span class="info-value" id="summaryBloodGroup">Non renseigné</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Allergies:</span>
+                                <span class="info-value" id="summaryAllergies">Aucune</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Autorisation soins d'urgence:</span>
+                                <span class="info-value" id="summaryAutorisation">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 6: Fournitures -->
+                    <div class="summary-section">
+                        <h4 class="section-title">📚 Fournitures scolaires</h4>
+                        <div class="section-content">
+                            <div class="info-row">
+                                <span class="info-label">Progression:</span>
+                                <span class="info-value" id="summarySupplies">0% complété</span>
+                            </div>
+                            <div class="info-row" id="suppliesNotesRow" style="display: none;">
+                                <span class="info-label">Notes:</span>
+                                <span class="info-value" id="summarySuppliesNotes">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions finales -->
+                <div class="final-actions">
+                    <div class="validation-section">
+                        <h4>✅ Validation finale</h4>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirmAccuracy" required>
+                                <span class="checkmark"></span>
+                                Je confirme que toutes les informations saisies sont exactes et complètes.
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="acceptTerms" required>
+                                <span class="checkmark"></span>
+                                J'accepte le règlement intérieur de l'École La Victoire et les conditions d'inscription.
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="authorizeContact" checked>
+                                <span class="checkmark"></span>
+                                J'autorise l'école à me contacter par téléphone, email ou WhatsApp pour les communications importantes.
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Actions d'impression -->
+                    <div class="print-section">
+                        <h4 class="bilingual">
+                            <span class="fr">📄 Documents à imprimer</span>
+                            <span class="ar">📄 المستندات للطباعة</span>
+                        </h4>
+                        <p class="bilingual">
+                            <span class="fr">Après validation, vous pourrez imprimer les documents suivants :</span>
+                            <span class="ar">بعد التأكيد، يمكنك طباعة المستندات التالية:</span>
+                        </p>
+                        
+                        <div class="print-buttons">
+                            <button type="button" class="btn btn-outline-primary" onclick="printReceipt()" id="printReceiptBtn" disabled>
+                                <i class="fas fa-receipt"></i>
+                                <span class="bilingual">
+                                    <span class="fr">Récépissé d'inscription (2 copies)</span>
+                                    <span class="ar">إيصال التسجيل (نسختان)</span>
+                                </span>
+                            </button>
+                            
+                            <button type="button" class="btn btn-outline-success" onclick="printSuppliesList()" id="printSuppliesBtn" disabled>
+                                <i class="fas fa-list-ul"></i>
+                                <span class="bilingual">
+                                    <span class="fr">Liste des fournitures</span>
+                                    <span class="ar">قائمة اللوازم المدرسية</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions finales -->
+                <div class="final-buttons">
+                    <button type="button" class="btn btn-info" onclick="previewData()">
+                        <i class="fas fa-eye"></i>
+                        <span class="bilingual">
+                            <span class="fr">Aperçu final</span>
+                            <span class="ar">المعاينة النهائية</span>
+                        </span>
+                    </button>
+                    
+                    <button type="button" class="btn btn-success" onclick="sendWhatsAppDocuments()" id="whatsappBtn" style="display: none;">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="bilingual">
+                            <span class="fr">Envoyer documents WhatsApp</span>
+                            <span class="ar">إرسال المستندات واتساب</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" class="btn btn-secondary" id="backOrHomeBtn" onclick="handleBackOrHome()">
+                    <span class="fr">Précédent</span>
+                    <span class="ar">السابق</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="validateBtn">
+                    <span class="fr">🎉 Valider l'inscription</span>
+                    <span class="ar">🎉 تأكيد التسجيل</span>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../js/bilingual.js"></script>
+    <script src="../js/whatsapp-integration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let inscriptionData = {};
+        let isValidated = false;
+
+        // Vérifier si l'utilisateur est connecté
+        window.onload = function() {
+            const operatorName = localStorage.getItem('operatorName');
+            if (!operatorName) {
+                window.location.href = '../index.html';
+                return;
+            }
+            document.getElementById('operatorName').textContent = 'Opératrice: ' + operatorName;
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
+            setLanguage(savedLanguage);
+            
+            // Charger et afficher les données
+            loadInscriptionData();
+            setupValidation();
+        };
+
+        function loadInscriptionData() {
+            const saved = localStorage.getItem('inscriptionData');
+            if (saved) {
+                inscriptionData = JSON.parse(saved);
+                displaySummary();
+                generateDossierNumber();
+            } else {
+                alert('Aucune donnée d\'inscription trouvée. Retour à l\'étape 1.');
+                window.location.href = 'step1-type-inscription.html';
+            }
+        }
+
+        function generateDossierNumber() {
+            if (!inscriptionData.dossierNumber) {
+                const year = new Date().getFullYear();
+                const timestamp = Date.now().toString().slice(-6);
+                const random = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+                inscriptionData.dossierNumber = `LV-${year}-${timestamp}${random}`;
+                
+                // Sauvegarder le numéro
+                localStorage.setItem('inscriptionData', JSON.stringify(inscriptionData));
+            }
+            
+            document.getElementById('dossierNumber').textContent = inscriptionData.dossierNumber;
+        }
+
+        function displaySummary() {
+            // Type d'inscription
+            document.getElementById('summaryType').textContent = 
+                inscriptionData.inscriptionType === 'nouvelle' ? 'Nouvelle inscription' : 'Réinscription';
+            document.getElementById('summaryLevel').textContent = inscriptionData.schoolLevel || '-';
+            
+            if (inscriptionData.inscriptionType === 'reinscription' && inscriptionData.previousSchool) {
+                document.getElementById('previousSchoolRow').style.display = 'flex';
+                document.getElementById('summaryPreviousSchool').textContent = inscriptionData.previousSchool;
+            }
+
+            // Élève
+            const fullName = `${inscriptionData.studentFirstname || ''} ${inscriptionData.studentLastname || ''}`.trim();
+            document.getElementById('summaryStudentName').textContent = fullName || '-';
+            document.getElementById('summaryBirthdate').textContent = inscriptionData.studentBirthdate || '-';
+            document.getElementById('summaryBirthplace').textContent = inscriptionData.studentBirthplace || '-';
+            document.getElementById('summaryGender').textContent = 
+                inscriptionData.studentGender === 'M' ? 'Masculin' : 
+                inscriptionData.studentGender === 'F' ? 'Féminin' : '-';
+            document.getElementById('summaryNationality').textContent = inscriptionData.studentNationality || '-';
+
+            // Parents
+            const fatherName = `${inscriptionData.fatherFirstname || ''} ${inscriptionData.fatherLastname || ''}`.trim();
+            const motherName = `${inscriptionData.motherFirstname || ''} ${inscriptionData.motherLastname || ''}`.trim();
+            document.getElementById('summaryFather').textContent = fatherName || '-';
+            document.getElementById('summaryFatherPhone').textContent = inscriptionData.fatherPhone || '-';
+            document.getElementById('summaryMother').textContent = motherName || '-';
+            document.getElementById('summaryMotherPhone').textContent = inscriptionData.motherPhone || '-';
+
+            // Services
+            document.getElementById('summaryTransport').textContent = 
+                inscriptionData.transportScolaire ? 'Oui' : 'Non';
+            
+            if (inscriptionData.transportScolaire && inscriptionData.quartier) {
+                document.getElementById('transportQuartierRow').style.display = 'flex';
+                let quartier = inscriptionData.quartier;
+                if (quartier === 'autre' && inscriptionData.autreQuartier) {
+                    quartier = inscriptionData.autreQuartier;
+                }
+                
+                // Traductions des quartiers
+                const quartiersMap = {
+                    'centre-ville': 'Centre-ville',
+                    'mellah': 'Mellah',
+                    'ensanche': 'Ensanche',
+                    'touilaa': 'Touilaa',
+                    'samsa': 'Samsa',
+                    'mhannech': 'M\'hannech',
+                    'sidi-talha': 'Sidi Talha',
+                    'sania': 'Sania',
+                    'kouia': 'Koui\'a',
+                    'sidi-mandri': 'Sidi Mandri',
+                    'borouj': 'Borouj',
+                    'federation': 'Fédération',
+                    'al-massira': 'Al Massira',
+                    'salam': 'Salam'
+                };
+                
+                document.getElementById('summaryTransportQuartier').textContent = 
+                    quartiersMap[quartier] || quartier.charAt(0).toUpperCase() + quartier.slice(1).replace('-', ' ');
+            }
+            
+            document.getElementById('summaryCantine').textContent = 
+                inscriptionData.cantineScolaire ? 'Oui' : 'Non';
+
+            // Médical
+            document.getElementById('summaryBloodGroup').textContent = 
+                inscriptionData.groupeSanguin || 'Non renseigné';
+            document.getElementById('summaryAllergies').textContent = 
+                inscriptionData.allergies || 'Aucune';
+            document.getElementById('summaryAutorisation').textContent = 
+                inscriptionData.autorisationSoins ? 'Accordée' : 'Non accordée';
+
+            // Fournitures
+            if (inscriptionData.fournitures) {
+                const totalItems = Object.keys(inscriptionData.fournitures).length;
+                const checkedItems = Object.values(inscriptionData.fournitures).filter(Boolean).length;
+                const percentage = totalItems > 0 ? Math.round((checkedItems / totalItems) * 100) : 0;
+                document.getElementById('summarySupplies').textContent = `${percentage}% complété (${checkedItems}/${totalItems})`;
+            }
+            
+            if (inscriptionData.notesFournitures) {
+                document.getElementById('suppliesNotesRow').style.display = 'flex';
+                document.getElementById('summarySuppliesNotes').textContent = inscriptionData.notesFournitures;
+            }
+        }
+
+        function setupValidation() {
+            // Vérifier si toutes les données requises sont présentes
+            const validateBtn = document.getElementById('validateBtn');
+            
+            let isValid = inscriptionData.studentFirstname && 
+                          inscriptionData.studentLastname &&
+                          inscriptionData.fatherPhone &&
+                          inscriptionData.motherPhone;
+            
+            // Le bouton est actif si les données de base sont présentes
+            validateBtn.disabled = !isValid;
+            
+            if (!isValid) {
+                showNotification('Certaines données obligatoires sont manquantes. Veuillez revenir aux étapes précédentes.', 'warning');
+            }
+        }
+
+        function previewData() {
+            // Afficher un aperçu final des données, en gérant les données manquantes
+            const modal = document.createElement('div');
+            modal.className = 'preview-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                backdrop-filter: blur(5px);
+            `;
+            
+            // Données avec valeurs par défaut pour éviter les erreurs
+            const data = {
+                dossierNumber: inscriptionData.dossierNumber ?? 'Non généré',
+                studentName: `${inscriptionData.studentFirstname ?? ''} ${inscriptionData.studentLastname ?? ''}`.trim() || 'Non renseigné',
+                schoolLevel: inscriptionData.schoolLevel ?? 'Non renseigné',
+                fatherName: `${inscriptionData.fatherFirstname ?? ''} ${inscriptionData.fatherLastname ?? ''}`.trim() || 'Non renseigné',
+                fatherPhone: inscriptionData.fatherPhone ?? 'Non renseigné',
+                motherName: `${inscriptionData.motherFirstname ?? ''} ${inscriptionData.motherLastname ?? ''}`.trim() || 'Non renseigné',
+                motherPhone: inscriptionData.motherPhone ?? 'Non renseigné',
+                transport: inscriptionData.transportScolaire ? 'Oui' : 'Non',
+                cantine: inscriptionData.cantineScolaire ? 'Oui' : 'Non',
+                date: new Date().toLocaleDateString('fr-FR')
+            };
+
+            modal.innerHTML = `
+                <div class="modal-content" style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    max-width: 600px;
+                    width: 90%;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    animation: fadeIn 0.3s ease-out;
+                ">
+                    <div class="modal-header" style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        padding-bottom: 15px;
+                        border-bottom: 2px solid #003C71;
+                    ">
+                        <h3 style="margin: 0; color: #003C71;">Aperçu final - ${data.dossierNumber}</h3>
+                        <button onclick="closePreview()" class="close-btn" style="
+                            background: none;
+                            border: none;
+                            font-size: 28px;
+                            cursor: pointer;
+                            color: #666;
+                            padding: 0 10px;
+                        ">&times;</button>
+                    </div>
+                    <div class="modal-body" style="line-height: 1.8;">
+                        <p><strong>Élève:</strong> ${data.studentName}</p>
+                        <p><strong>Niveau:</strong> ${data.schoolLevel}</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <p><strong>Père:</strong> ${data.fatherName} - 📞 ${data.fatherPhone}</p>
+                        <p><strong>Mère:</strong> ${data.motherName} - 📞 ${data.motherPhone}</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <p><strong>Transport:</strong> ${data.transport}</p>
+                        <p><strong>Cantine:</strong> ${data.cantine}</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <p><strong>Date d'inscription:</strong> ${data.date}</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function closePreview() {
+            const modal = document.querySelector('.preview-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function printReceipt() {
+            // Génération du récépissé d'inscription
+            if (!isValidated) {
+                showNotification('Veuillez d\'abord valider l\'inscription.', 'warning');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank');
+            const receiptHTML = generateReceiptHTML();
+            
+            printWindow.document.write(receiptHTML);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function printSuppliesList() {
+            // Génération de la liste des fournitures
+            if (!isValidated) {
+                showNotification('Veuillez d\'abord valider l\'inscription.', 'warning');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank');
+            const suppliesHTML = generateSuppliesHTML();
+            
+            printWindow.document.write(suppliesHTML);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function generateReceiptHTML() {
+            const currentDate = new Date().toLocaleDateString('fr-FR');
+            const currentTime = new Date().toLocaleTimeString('fr-FR');
+            
+            return `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Récépissé d'inscription - ${inscriptionData.dossierNumber}</title>
+                    <style>
+                        body { 
+                            font-family: 'Arial', sans-serif; 
+                            margin: 0; 
+                            padding: 20px; 
+                            background: #f8f9fa;
+                            color: #333;
+                        }
+                        .receipt-container {
+                            background: white;
+                            border-radius: 12px;
+                            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                            margin: 20px 0;
+                            overflow: hidden;
+                        }
+                        .header { 
+                            background: linear-gradient(135deg, #003C71 0%, #0056b3 100%);
+                            color: white;
+                            text-align: center; 
+                            padding: 30px 20px; 
+                            margin-bottom: 0;
+                            border: none;
+                        }
+                        .school-name { 
+                            font-size: 28px; 
+                            font-weight: bold; 
+                            margin: 0 0 8px 0;
+                            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                        }
+                        .school-info {
+                            font-size: 14px;
+                            opacity: 0.9;
+                            margin: 5px 0;
+                        }
+                        .receipt-content {
+                            padding: 30px;
+                        }
+                        .receipt-title { 
+                            font-size: 24px; 
+                            margin: 0 0 10px 0; 
+                            text-align: center; 
+                            font-weight: bold;
+                            color: #003C71;
+                            border-bottom: 3px solid #FFC107;
+                            padding-bottom: 15px;
+                        }
+                        .dossier-number { 
+                            text-align: center; 
+                            font-size: 18px; 
+                            color: #003C71; 
+                            margin-bottom: 30px;
+                            background: #e3f2fd;
+                            padding: 15px;
+                            border-radius: 8px;
+                            font-weight: 600;
+                        }
+                        .info-section {
+                            margin: 25px 0;
+                            border-left: 4px solid #FFC107;
+                            padding-left: 20px;
+                        }
+                        .section-title {
+                            color: #003C71;
+                            font-weight: bold;
+                            font-size: 16px;
+                            margin-bottom: 15px;
+                            text-transform: uppercase;
+                        }
+                        .info-row { 
+                            display: flex; 
+                            justify-content: space-between; 
+                            padding: 12px 0; 
+                            border-bottom: 1px solid #e9ecef;
+                            align-items: center;
+                        }
+                        .info-row:last-child {
+                            border-bottom: none;
+                        }
+                        .info-label {
+                            font-weight: 600;
+                            color: #495057;
+                            width: 40%;
+                        }
+                        .info-value {
+                            color: #212529;
+                            font-weight: 500;
+                            text-align: right;
+                            width: 55%;
+                        }
+                        .signatures { 
+                            margin-top: 50px; 
+                            display: flex; 
+                            justify-content: space-between;
+                            background: #f8f9fa;
+                            padding: 30px;
+                            border-radius: 8px;
+                        }
+                        .signature-box { 
+                            text-align: center; 
+                            width: 45%;
+                        }
+                        .signature-label {
+                            font-weight: bold;
+                            margin-bottom: 60px;
+                            color: #495057;
+                        }
+                        .signature-line {
+                            border-top: 2px solid #003C71;
+                            margin-top: 10px;
+                        }
+                        .copy-separator { 
+                            border-top: 3px dashed #003C71; 
+                            margin: 50px 0; 
+                            text-align: center; 
+                            padding: 20px;
+                            background: #fff3cd;
+                            font-weight: bold;
+                            color: #856404;
+                        }
+                        .footer {
+                            text-align: center;
+                            margin-top: 30px;
+                            padding: 20px;
+                            background: #f8f9fa;
+                            border-radius: 8px;
+                            font-size: 12px;
+                            color: #6c757d;
+                        }
+                        @media print { 
+                            body { background: white; }
+                            .copy-separator { page-break-before: always; }
+                            .receipt-container { box-shadow: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt-container">
+                        <div class="header">
+                            <div class="school-name">🎓 LA VICTOIRE DE L'ENSEIGNEMENT PRIVÉ</div>
+                            <div class="school-info">École Maternelle et Primaire Bilingue</div>
+                            <div class="school-info">📍 Avenue Mohammed Daoud, Tétouan - Maroc</div>
+                            <div class="school-info">🌐 www.groupelavictoire.com | ☎️ +212 5 39 96 XX XX</div>
+                        </div>
+                        
+                        <div class="receipt-content">
+                            <div class="receipt-title">📜 RÉCÉPISSÉ D'INSCRIPTION OFFICIEL</div>
+                            <div class="dossier-number">
+                                📁 Numéro de Dossier: ${inscriptionData.dossierNumber}<br>
+                                📅 ${currentDate} à ${currentTime}
+                            </div>
+                            
+                            <div class="info-section">
+                                <div class="section-title">👦 Informations de l'élève</div>
+                                <div class="info-row">
+                                    <span class="info-label">Nom complet:</span>
+                                    <span class="info-value">${inscriptionData.studentFirstname} ${inscriptionData.studentLastname}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Date de naissance:</span>
+                                    <span class="info-value">${inscriptionData.studentBirthdate || 'Non renseigné'}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Niveau scolaire:</span>
+                                    <span class="info-value">${inscriptionData.schoolLevel}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Type d'inscription:</span>
+                                    <span class="info-value">${inscriptionData.inscriptionType === 'nouvelle' ? '🆕 Nouvelle inscription' : '🔄 Réinscription'}</span>
+                                </div>
+                            </div>
+
+                            <div class="info-section">
+                                <div class="section-title">👨‍👩‍👦 Informations des parents</div>
+                                <div class="info-row">
+                                    <span class="info-label">Père:</span>
+                                    <span class="info-value">${inscriptionData.fatherFirstname} ${inscriptionData.fatherLastname}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Téléphone père:</span>
+                                    <span class="info-value">📞 ${inscriptionData.fatherPhone}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Mère:</span>
+                                    <span class="info-value">${inscriptionData.motherFirstname} ${inscriptionData.motherLastname}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Téléphone mère:</span>
+                                    <span class="info-value">📞 ${inscriptionData.motherPhone}</span>
+                                </div>
+                            </div>
+
+                            <div class="info-section">
+                                <div class="section-title">🚌 Services scolaires souscrits</div>
+                                <div class="info-row">
+                                    <span class="info-label">Transport scolaire:</span>
+                                    <span class="info-value">${inscriptionData.transportScolaire ? '✅ Souscrit' : '❌ Non souscrit'}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Cantine scolaire:</span>
+                                    <span class="info-value">${inscriptionData.cantineScolaire ? '✅ Souscrit' : '❌ Non souscrit'}</span>
+                                </div>
+                                ${inscriptionData.transportQuartier ? `<div class="info-row">
+                                    <span class="info-label">Quartier transport:</span>
+                                    <span class="info-value">📍 ${inscriptionData.transportQuartier}</span>
+                                </div>` : ''}
+                            </div>
+                            
+                            <div class="signatures">
+                                <div class="signature-box">
+                                    <div class="signature-label">✍️ Signature Parent/Tuteur</div>
+                                    <div class="signature-line"></div>
+                                </div>
+                                <div class="signature-box">
+                                    <div class="signature-label">🏫 Cachet Officiel École</div>
+                                    <div class="signature-line"></div>
+                                </div>
+                            </div>
+
+                            <div class="footer">
+                                <strong>📋 Document officiel d'inscription</strong><br>
+                                Ce récépissé fait foi d'inscription à l'École La Victoire pour l'année scolaire 2025-2026<br>
+                                Conservez précieusement ce document
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="copy-separator">--- COPIE ÉCOLE ---</div>
+                    
+                    <!-- Deuxième copie identique -->
+                    <div class="receipt-copy">
+                        <div class="header">
+                            <div class="school-name">LA VICTOIRE DE L'ENSEIGNEMENT PRIVÉ</div>
+                            <div>École Maternelle et Primaire</div>
+                            <div>Avenue Mohammed Daoud, Tétouan</div>
+                            <div>www.groupelavictoire.com</div>
+                        </div>
+                        
+                        <div class="receipt-title">RÉCÉPISSÉ D'INSCRIPTION</div>
+                        <div class="dossier-number">N° Dossier: ${inscriptionData.dossierNumber}</div>
+                        
+                        <div class="info-row"><span><strong>Élève:</strong></span><span>${inscriptionData.studentFirstname} ${inscriptionData.studentLastname}</span></div>
+                        <div class="info-row"><span><strong>Date de naissance:</strong></span><span>${inscriptionData.studentBirthdate || '-'}</span></div>
+                        <div class="info-row"><span><strong>Niveau:</strong></span><span>${inscriptionData.schoolLevel}</span></div>
+                        <div class="info-row"><span><strong>Type d'inscription:</strong></span><span>${inscriptionData.inscriptionType === 'nouvelle' ? 'Nouvelle inscription' : 'Réinscription'}</span></div>
+                        <div class="info-row"><span><strong>Père:</strong></span><span>${inscriptionData.fatherFirstname} ${inscriptionData.fatherLastname}</span></div>
+                        <div class="info-row"><span><strong>Téléphone père:</strong></span><span>${inscriptionData.fatherPhone}</span></div>
+                        <div class="info-row"><span><strong>Mère:</strong></span><span>${inscriptionData.motherFirstname} ${inscriptionData.motherLastname}</span></div>
+                        <div class="info-row"><span><strong>Téléphone mère:</strong></span><span>${inscriptionData.motherPhone}</span></div>
+                        <div class="info-row"><span><strong>Transport scolaire:</strong></span><span>${inscriptionData.transportScolaire ? 'Oui' : 'Non'}</span></div>
+                        <div class="info-row"><span><strong>Cantine scolaire:</strong></span><span>${inscriptionData.cantineScolaire ? 'Oui' : 'Non'}</span></div>
+                        <div class="info-row"><span><strong>Date d'inscription:</strong></span><span>${currentDate}</span></div>
+                        
+                        <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                            <div style="text-align: center;">
+                                <div style="margin-bottom: 50px;">Signature parent</div>
+                                <div style="border-top: 1px solid #000; width: 200px;"></div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="margin-bottom: 50px;">Cachet école</div>
+                                <div style="border-top: 1px solid #000; width: 200px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+        }
+
+        function generateSuppliesHTML() {
+            // Récupérer les fournitures sélectionnées depuis le localStorage
+            const suppliesData = JSON.parse(localStorage.getItem('suppliesData') || '{}');
+            const selectedSupplies = suppliesData.selectedSupplies || [];
+            
+            // Fournitures par niveau selon les spécifications
+            const fournituresParNiveau = {
+                'PS': {
+                    name: 'Petite Section',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire de base',
+                            items: [
+                                'Cartable adapté à la taille de l\'enfant',
+                                'Trousse simple',
+                                'Crayons de couleur (12 couleurs)',
+                                'Feutres lavables (12 couleurs)',
+                                'Colle en bâton (2 unités)',
+                                'Ciseaux à bout rond',
+                                'Ardoise blanche + 2 feutres'
+                            ]
+                        },
+                        {
+                            name: '🎨 Matériel d\'éveil',
+                            items: [
+                                'Pâte à modeler (4 pots)',
+                                'Pinceaux (taille moyenne)',
+                                'Tablier de peinture',
+                                'Craies grasses'
+                            ]
+                        },
+                        {
+                            name: '🧴 Hygiène et confort',
+                            items: [
+                                '2 boîtes de mouchoirs en papier',
+                                '1 paquet de lingettes humides',
+                                '1 tablier en plastique',
+                                '1 gobelet marqué au nom',
+                                '1 coussin pour la sieste',
+                                '1 change complet',
+                                '2 photos d\'identité'
+                            ]
+                        }
+                    ]
+                },
+                'MS': {
+                    name: 'Moyenne Section',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable adapté',
+                                '2 boîtes de mouchoirs',
+                                'Tablier de peinture',
+                                'Crayons de couleur (12)',
+                                'Colle en bâton (2)',
+                                'Ciseaux à bout rond',
+                                'Ardoise + 2 feutres',
+                                '2 photos d\'identité'
+                            ]
+                        }
+                    ]
+                },
+                'GS': {
+                    name: 'Grande Section',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable solide',
+                                'Trousse',
+                                'Crayons de couleur (18)',
+                                'Feutres (12)',
+                                'Colle en bâton (3)',
+                                'Ciseaux',
+                                'Ardoise + feutres',
+                                'Cahier de dessin',
+                                'Crayons HB (3)',
+                                'Gomme'
+                            ]
+                        }
+                    ]
+                },
+                'CP': {
+                    name: 'Cours Préparatoire',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable robuste',
+                                'Trousse double',
+                                'Crayons HB (10)',
+                                'Gomme blanche',
+                                'Taille-crayon',
+                                'Règle 20cm',
+                                'Ciseaux',
+                                'Colle (5)',
+                                'Stylos bleus (5)',
+                                'Stylos rouges (2)',
+                                'Cahiers grands carreaux (5)',
+                                'Protège-cahiers',
+                                'Crayons de couleur (24)'
+                            ]
+                        }
+                    ]
+                },
+                'CE1': {
+                    name: 'Cours Élémentaire 1',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable',
+                                'Trousse double',
+                                'Crayons HB (10)',
+                                'Gomme',
+                                'Règle 30cm',
+                                'Ciseaux',
+                                'Colle (6)',
+                                'Surligneurs (3)',
+                                'Stylos bleus (6)',
+                                'Stylos rouges (3)',
+                                'Cahiers 24x32 (6)',
+                                'Agenda scolaire',
+                                'Équerre',
+                                'Calculatrice simple'
+                            ]
+                        }
+                    ]
+                },
+                'CE2': {
+                    name: 'Cours Élémentaire 2',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable résistant',
+                                'Trousse double',
+                                'Crayons HB (12)',
+                                'Gomme',
+                                'Règle 30cm',
+                                'Ciseaux qualité',
+                                'Colle (8)',
+                                'Surligneurs (4)',
+                                'Correcteur',
+                                'Stylos bleus (8)',
+                                'Stylos rouges (4)',
+                                'Cahiers 24x32 (8)',
+                                'Agenda scolaire',
+                                'Équerre',
+                                'Compas',
+                                'Calculatrice'
+                            ]
+                        }
+                    ]
+                },
+                'CM1': {
+                    name: 'Cours Moyen 1',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable solide',
+                                'Trousse compartiments',
+                                'Crayons HB (15)',
+                                'Porte-mines + mines',
+                                'Gomme',
+                                'Règle 30cm graduée',
+                                'Équerre',
+                                'Compas',
+                                'Ciseaux',
+                                'Colle (10)',
+                                'Surligneurs (5)',
+                                'Correcteur',
+                                'Stylos bleus (10)',
+                                'Stylos rouges (5)',
+                                'Stylos verts (3)',
+                                'Cahiers 24x32 (10)',
+                                'Agenda scolaire',
+                                'Calculatrice scientifique'
+                            ]
+                        }
+                    ]
+                },
+                'CM2': {
+                    name: 'Cours Moyen 2',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable grande capacité',
+                                'Trousse multiple',
+                                'Crayons HB (15)',
+                                'Porte-mines + mines',
+                                'Gomme',
+                                'Règle 30cm',
+                                'Équerre',
+                                'Compas précision',
+                                'Rapporteur',
+                                'Ciseaux',
+                                'Colle (12)',
+                                'Surligneurs (6)',
+                                'Correcteur (3)',
+                                'Stylos bleus (12)',
+                                'Stylos rouges (6)',
+                                'Stylos verts (4)',
+                                'Cahiers 24x32 (12)',
+                                'Agenda scolaire',
+                                'Calculatrice scientifique',
+                                'Dictionnaire français'
+                            ]
+                        }
+                    ]
+                },
+                '6ème année': {
+                    name: '6ème Année',
+                    categories: [
+                        {
+                            name: '📚 Matériel scolaire',
+                            items: [
+                                'Cartable grande capacité',
+                                'Trousse multiple',
+                                'Crayons HB (20)',
+                                'Porte-mines + mines',
+                                'Gomme',
+                                'Règle 30cm',
+                                'Équerre',
+                                'Compas précision',
+                                'Rapporteur',
+                                'Ciseaux',
+                                'Colle (15)',
+                                'Surligneurs (8)',
+                                'Correcteur (4)',
+                                'Stylos bleus (15)',
+                                'Stylos rouges (8)',
+                                'Stylos verts (5)',
+                                'Stylos noirs (5)',
+                                'Cahiers 24x32 (15)',
+                                'Agenda scolaire',
+                                'Calculatrice scientifique',
+                                'Dictionnaire français',
+                                'Atlas géographique'
+                            ]
+                        }
+                    ]
+                }
+            };
+            
+            // Récupérer les données du niveau
+            const levelData = fournituresParNiveau[inscriptionData.schoolLevel];
+            let allSupplies = [];
+            if (levelData && levelData.categories) {
+                levelData.categories.forEach(category => {
+                    allSupplies = allSupplies.concat(category.items);
+                });
+            } else {
+                allSupplies = ['Liste non disponible pour ce niveau'];
+            }
+            
+            const currentDate = new Date().toLocaleDateString('fr-FR');
+            const currentTime = new Date().toLocaleTimeString('fr-FR');
+            
+            // Calculer les statistiques
+            const totalItems = allSupplies.length;
+            const acquiredItems = selectedSupplies.length;
+            const remainingItems = totalItems - acquiredItems;
+            const progressPercent = totalItems > 0 ? Math.round((acquiredItems / totalItems) * 100) : 0;
+            
+            return `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Liste des fournitures - ${inscriptionData.studentFirstname} ${inscriptionData.studentLastname}</title>
+                    <style>
+                        body { 
+                            font-family: 'Arial', sans-serif; 
+                            margin: 0; 
+                            padding: 20px; 
+                            background: #f8f9fa;
+                            color: #333;
+                        }
+                        .supplies-container {
+                            background: white;
+                            border-radius: 12px;
+                            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                            margin: 20px 0;
+                            overflow: hidden;
+                        }
+                        .header { 
+                            background: linear-gradient(135deg, #003C71 0%, #0056b3 100%);
+                            color: white;
+                            text-align: center; 
+                            padding: 30px 20px; 
+                            margin-bottom: 0;
+                        }
+                        .school-name { 
+                            font-size: 28px; 
+                            font-weight: bold; 
+                            margin: 0 0 8px 0;
+                            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                        }
+                        .school-info {
+                            font-size: 14px;
+                            opacity: 0.9;
+                            margin: 5px 0;
+                        }
+                        .supplies-content {
+                            padding: 30px;
+                        }
+                        .list-title { 
+                            font-size: 24px; 
+                            margin: 0 0 10px 0; 
+                            text-align: center; 
+                            font-weight: bold;
+                            color: #003C71;
+                            border-bottom: 3px solid #FFC107;
+                            padding-bottom: 15px;
+                        }
+                        .student-info { 
+                            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+                            padding: 25px; 
+                            border-radius: 12px; 
+                            margin-bottom: 30px;
+                            border-left: 5px solid #003C71;
+                        }
+                        .student-info-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 15px;
+                        }
+                        .info-item {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        .info-label {
+                            font-weight: 600;
+                            color: #495057;
+                        }
+                        .info-value {
+                            color: #003C71;
+                            font-weight: 500;
+                        }
+                        .progress-section {
+                            background: #fff3cd;
+                            border: 2px solid #ffc107;
+                            border-radius: 12px;
+                            padding: 20px;
+                            margin: 30px 0;
+                            text-align: center;
+                        }
+                        .progress-title {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #856404;
+                            margin-bottom: 15px;
+                        }
+                        .progress-stats {
+                            display: flex;
+                            justify-content: space-around;
+                            margin: 20px 0;
+                        }
+                        .stat-item {
+                            text-align: center;
+                        }
+                        .stat-number {
+                            font-size: 28px;
+                            font-weight: bold;
+                            color: #003C71;
+                            display: block;
+                        }
+                        .stat-label {
+                            font-size: 12px;
+                            color: #6c757d;
+                            text-transform: uppercase;
+                        }
+                        .progress-bar {
+                            width: 100%;
+                            height: 25px;
+                            background: #e9ecef;
+                            border-radius: 12px;
+                            overflow: hidden;
+                            margin: 15px 0;
+                        }
+                        .progress-fill {
+                            height: 100%;
+                            background: linear-gradient(90deg, #10b981 0%, #065f46 100%);
+                            width: ${progressPercent}%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-weight: bold;
+                            font-size: 14px;
+                        }
+                        .categories-section {
+                            margin: 30px 0;
+                        }
+                        .category-header {
+                            background: #003C71;
+                            color: white;
+                            padding: 15px 20px;
+                            font-weight: bold;
+                            font-size: 16px;
+                            margin: 20px 0 0 0;
+                            border-radius: 8px 8px 0 0;
+                        }
+                        .supply-item { 
+                            display: flex; 
+                            align-items: center; 
+                            padding: 12px 20px; 
+                            border-bottom: 1px solid #e9ecef;
+                            background: white;
+                        }
+                        .supply-item:last-child {
+                            border-bottom: none;
+                            border-radius: 0 0 8px 8px;
+                        }
+                        .checkbox { 
+                            width: 24px; 
+                            height: 24px; 
+                            border: 3px solid #003C71; 
+                            margin-right: 15px;
+                            border-radius: 4px;
+                            position: relative;
+                            flex-shrink: 0;
+                        }
+                        .checkbox.checked {
+                            background: #10b981;
+                            border-color: #10b981;
+                        }
+                        .checkbox.checked::after {
+                            content: '✓';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-weight: bold;
+                            font-size: 16px;
+                        }
+                        .supply-text {
+                            flex: 1;
+                            font-size: 14px;
+                            color: #495057;
+                        }
+                        .supply-text.acquired {
+                            color: #10b981;
+                            font-weight: 500;
+                        }
+                        .signatures { 
+                            margin-top: 50px; 
+                            display: flex; 
+                            justify-content: space-between;
+                            background: #f8f9fa;
+                            padding: 30px;
+                            border-radius: 12px;
+                        }
+                        .signature-box { 
+                            text-align: center; 
+                            width: 45%;
+                        }
+                        .signature-label {
+                            font-weight: bold;
+                            margin-bottom: 60px;
+                            color: #495057;
+                        }
+                        .signature-line {
+                            border-top: 2px solid #003C71;
+                            margin-top: 10px;
+                        }
+                        .footer {
+                            text-align: center;
+                            margin-top: 30px;
+                            padding: 20px;
+                            background: #f8f9fa;
+                            border-radius: 8px;
+                            font-size: 12px;
+                            color: #6c757d;
+                        }
+                        .important-note {
+                            background: #d1ecf1;
+                            border: 2px solid #bee5eb;
+                            border-left: 5px solid #17a2b8;
+                            padding: 20px;
+                            border-radius: 8px;
+                            margin: 30px 0;
+                        }
+                        @media print { 
+                            body { background: white; }
+                            .supplies-container { box-shadow: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="supplies-container">
+                        <div class="header">
+                            <div class="school-name">🎓 LA VICTOIRE DE L'ENSEIGNEMENT PRIVÉ</div>
+                            <div class="school-info">École Maternelle et Primaire Bilingue</div>
+                            <div class="school-info">📍 Avenue Mohammed Daoud, Tétouan - Maroc</div>
+                            <div class="school-info">🌐 www.groupelavictoire.com | ☎️ +212 5 39 96 XX XX</div>
+                        </div>
+                        
+                        <div class="supplies-content">
+                            <div class="list-title">📋 LISTE DES FOURNITURES SCOLAIRES</div>
+                            <div style="text-align: center; font-size: 16px; margin-bottom: 30px; color: #6c757d;">
+                                Année scolaire 2025-2026 • ${currentDate} à ${currentTime}
+                            </div>
+                            
+                            <div class="student-info">
+                                <div class="student-info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">👦 Élève:</span>
+                                        <span class="info-value">${inscriptionData.studentFirstname} ${inscriptionData.studentLastname}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">📚 Classe:</span>
+                                        <span class="info-value">${inscriptionData.schoolLevel}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">📁 N° Dossier:</span>
+                                        <span class="info-value">${inscriptionData.dossierNumber}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">📅 Date:</span>
+                                        <span class="info-value">${currentDate}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-section">
+                                <div class="progress-title">📊 STATUT D'ACQUISITION DES FOURNITURES</div>
+                                <div class="progress-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">${totalItems}</span>
+                                        <span class="stat-label">Total Articles</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" style="color: #10b981;">${acquiredItems}</span>
+                                        <span class="stat-label">Déjà Acquis</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number" style="color: #dc3545;">${remainingItems}</span>
+                                        <span class="stat-label">Reste à Acheter</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill">${progressPercent}% Complété</div>
+                                </div>
+                            </div>
+                            
+                            <div class="categories-section">
+                                ${levelData && levelData.categories ? levelData.categories.map(category => `
+                                    <div class="category-header">${category.name}</div>
+                                    ${category.items.map(item => `
+                                        <div class="supply-item">
+                                            <div class="checkbox ${selectedSupplies.includes(item) ? 'checked' : ''}"></div>
+                                            <div class="supply-text ${selectedSupplies.includes(item) ? 'acquired' : ''}">${item}</div>
+                                        </div>
+                                    `).join('')}
+                                `).join('') : `
+                                    <div class="category-header">📚 Fournitures requises</div>
+                                    ${allSupplies.map(item => `
+                                        <div class="supply-item">
+                                            <div class="checkbox ${selectedSupplies.includes(item) ? 'checked' : ''}"></div>
+                                            <div class="supply-text ${selectedSupplies.includes(item) ? 'acquired' : ''}">${item}</div>
+                                        </div>
+                                    `).join('')}
+                                `}
+                            </div>
+                            
+                            <div class="important-note">
+                                <strong>📝 Instructions importantes:</strong><br>
+                                • Veuillez marquer le nom de l'élève sur tous les articles<br>
+                                • Les fournitures doivent être apportées le premier jour de classe<br>
+                                • Les articles cochés ✅ ont été marqués comme "déjà acquis" lors de l'inscription<br>
+                                • Pour toute question, contactez l'école au +212 5 39 96 XX XX
+                            </div>
+                            
+                            <div class="signatures">
+                                <div class="signature-box">
+                                    <div class="signature-label">✍️ Signature Parent/Tuteur</div>
+                                    <div class="signature-line"></div>
+                                </div>
+                                <div class="signature-box">
+                                    <div class="signature-label">🏫 Cachet Officiel École</div>
+                                    <div class="signature-line"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="footer">
+                                <strong>📋 Liste officielle des fournitures scolaires</strong><br>
+                                École La Victoire - Tétouan • Année scolaire 2025-2026<br>
+                                Document généré le ${currentDate} à ${currentTime}
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+        }
+
+        function showNotification(message, type = 'info') {
+            // Simple notification system
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                max-width: 400px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                ${type === 'success' ? 'background: #10b981;' : ''}
+                ${type === 'warning' ? 'background: #f59e0b;' : ''}
+                ${type === 'error' ? 'background: #ef4444;' : ''}
+                ${type === 'info' ? 'background: #3b82f6;' : ''}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Nouvelle fonction WhatsApp avec système PDF intégré professionnel
+        function sendWhatsApp() {
+            sendWhatsAppDocuments();
+        }
+
+        function sendWhatsAppDocuments() {
+            if (!isValidated) {
+                showNotification('Veuillez d\'abord valider l\'inscription.', 'warning');
+                return;
+            }
+            
+            // Préparer les données d'inscription pour le système PDF professionnel
+            const inscriptionDataForPDF = {
+                dossier_number: inscriptionData.dossierNumber,
+                student_firstname: inscriptionData.studentFirstname,
+                student_lastname: inscriptionData.studentLastname,
+                student_birthdate: inscriptionData.studentBirthdate,
+                student_birthplace: inscriptionData.studentBirthplace,
+                student_gender: inscriptionData.studentGender,
+                student_nationality: inscriptionData.studentNationality,
+                school_level: inscriptionData.schoolLevel,
+                inscription_type: inscriptionData.inscriptionType === 'nouvelle' ? 'Nouvelle inscription' : 'Réinscription',
+                transport_scolaire: inscriptionData.transportScolaire ? 'true' : 'false',
+                transport_quartier: inscriptionData.transportQuartier || inscriptionData.quartier,
+                cantine_scolaire: inscriptionData.cantineScolaire ? 'true' : 'false',
+                parent_mobile: inscriptionData.motherPhone || inscriptionData.fatherPhone,
+                mother_mobile: inscriptionData.motherPhone,
+                father_mobile: inscriptionData.fatherPhone,
+                father_firstname: inscriptionData.fatherFirstname,
+                father_lastname: inscriptionData.fatherLastname,
+                mother_firstname: inscriptionData.motherFirstname,
+                mother_lastname: inscriptionData.motherLastname,
+                blood_group: inscriptionData.groupeSanguin,
+                allergies: inscriptionData.allergies,
+                emergency_authorization: inscriptionData.autorisationSoins,
+                checked_supplies: inscriptionData.fournitures ? Object.keys(inscriptionData.fournitures).filter(key => inscriptionData.fournitures[key]) : [],
+                operator_name: localStorage.getItem('operatorName') || 'Système automatique',
+                validation_date: new Date().toISOString()
+            };
+            
+            // Lancer le système WhatsApp intégré professionnel
+            if (typeof whatsappIntegration !== 'undefined') {
+                whatsappIntegration.prepareAndSend(inscriptionDataForPDF);
+            } else {
+                // Fallback vers l'ancienne méthode si le système n'est pas chargé
+                showNotification('⚠️ Système PDF avancé non disponible. Utilisation de la méthode de base...', 'warning');
+                setTimeout(() => {
+                    sendWhatsAppFallback();
+                }, 1000);
+            }
+        }
+
+        // Méthode de secours pour WhatsApp
+        function sendWhatsAppFallback() {
+            const parentPhone = inscriptionData.fatherPhone || inscriptionData.motherPhone;
+            if (!parentPhone) {
+                showNotification('Aucun numéro de téléphone des parents trouvé.', 'error');
+                return;
+            }
+            
+            showNotification('📄 Génération des documents de base...', 'info');
+            
+            const message = `🎓 École La Victoire - Confirmation d'inscription
+
+📁 N° Dossier: ${inscriptionData.dossierNumber}
+👦 Élève: ${inscriptionData.studentFirstname} ${inscriptionData.studentLastname}
+📚 Niveau: ${inscriptionData.schoolLevel}
+
+🚌 Services: Transport ${inscriptionData.transportScolaire ? '✅' : '❌'} | Cantine ${inscriptionData.cantineScolaire ? '✅' : '❌'}
+
+📞 Contact: +212 5 39 96 XX XX
+🌐 groupelavictoire.com`;
+            
+            const cleanPhone = parentPhone.replace(/[^0-9]/g, '');
+            const whatsappPhone = cleanPhone.startsWith('0') ? '212' + cleanPhone.substring(1) : cleanPhone;
+            
+            const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            
+            showNotification('📱 WhatsApp ouvert avec le message de base', 'success');
+        }
+
+        function handleBackOrHome() {
+            if (isValidated) {
+                // After validation, go to welcome page to start a new inscription
+                window.location.href = '../welcome.html';
+            } else {
+                // Before validation, go to the previous step
+                window.location.href = 'step6-fournitures.html';
+            }
+        }
+
+        document.getElementById('step7Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const confirmAccuracy = document.getElementById('confirmAccuracy').checked;
+            const acceptTerms = document.getElementById('acceptTerms').checked;
+            
+            if (!confirmAccuracy || !acceptTerms) {
+                showNotification('Veuillez cocher toutes les cases de confirmation.', 'warning');
+                return;
+            }
+            
+            // Sauvegarder les données finales
+            inscriptionData.validationDate = new Date().toISOString();
+            inscriptionData.status = 'validated';
+            inscriptionData.operatorName = localStorage.getItem('operatorName');
+            
+            localStorage.setItem('inscriptionData', JSON.stringify(inscriptionData));
+            
+            // --- NOUVELLE LOGIQUE D'ARCHIVAGE ---
+            // Récupérer la liste des inscriptions existantes
+            let allInscriptions = JSON.parse(localStorage.getItem('allInscriptions') || '[]');
+            // Ajouter la nouvelle inscription à la liste
+            allInscriptions.push(inscriptionData);
+            // Sauvegarder la liste mise à jour
+            localStorage.setItem('allInscriptions', JSON.stringify(allInscriptions));
+            // --- FIN DE LA NOUVELLE LOGIQUE ---
+
+            // Marquer comme validé
+            isValidated = true;
+            
+            // Activer les boutons d'impression
+            document.getElementById('printReceiptBtn').disabled = false;
+            document.getElementById('printSuppliesBtn').disabled = false;
+            
+            // Afficher confirmation
+            showNotification(`🎉 Inscription validée avec succès ! Numéro de dossier: ${inscriptionData.dossierNumber}`, 'success');
+            
+            // Afficher bouton WhatsApp
+            document.getElementById('whatsappBtn').style.display = 'inline-block';
+            
+            // Désactiver le bouton de validation
+            document.getElementById('validateBtn').disabled = true;
+            document.getElementById('validateBtn').innerHTML = `
+                <span class="fr">✅ Inscription validée</span>
+                <span class="ar">✅ تم تأكيد التسجيل</span>
+            `;
+            
+            // Changer le statut
+            document.querySelector('.status-badge').textContent = 'Validé';
+            document.querySelector('.status-badge').className = 'status-badge validated';
+
+            // Modifier le bouton "Précédent" pour qu'il devienne "Accueil / Nouvelle Inscription"
+            const backOrHomeBtn = document.getElementById('backOrHomeBtn');
+            backOrHomeBtn.innerHTML = `
+                <i class="fas fa-home"></i>
+                <span class="fr">Accueil (Nouvelle Inscription)</span>
+                <span class="ar">الرئيسية (تسجيل جديد)</span>
+            `;
+            backOrHomeBtn.classList.remove('btn-secondary');
+            backOrHomeBtn.classList.add('btn-info');
+        });
+    </script>
+
+    <style>
+        .dossier-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dossier-number h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .dossier-number p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .dossier-number a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .status-badge.pending {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status-badge.validated {
+            background: #10b981;
+            color: white;
+        }
+
+        .summary-sections {
+            margin-bottom: 2rem;
+        }
+
+        .summary-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-content {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: var(--dark-gray);
+            flex: 1;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary-color);
+            flex: 2;
+            text-align: right;
+        }
+
+        .final-actions {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .validation-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .signature-section {
+            margin-top: 2rem;
+        }
+
+        .signature-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #signatureCanvas {
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            background: white;
+            cursor: crosshair;
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .signature-status {
+            font-weight: 600;
+        }
+
+        .final-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+            
+            .info-value {
+                text-align: left;
+            }
+            
+            .final-buttons {
+                flex-direction: column;
+            }
+        }
+
+        .confirmation-checks {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .confirmation-checks h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            margin-right: 12px;
+            margin-top: 2px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label input:checked + .checkmark {
+            background: var(--primary-color);
+        }
+
+        .checkbox-label input:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .checkbox-label input {
+            display: none;
+        }
+
+        /* Print Section Styles */
+        .print-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border: 2px solid #e9ecef;
+        }
+
+        .print-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-outline-primary {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+        }
+
+        .btn-outline-primary:hover:not(:disabled) {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 60, 113, 0.3);
+        }
+
+        .btn-outline-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline-success {
+            background: white;
+            border: 2px solid #10b981;
+            color: #10b981;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+        }
+
+        .btn-outline-success:hover:not(:disabled) {
+            background: #10b981;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-outline-success:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Final Actions */
+        .final-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Preview Modal Styles */
+        .preview-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            width: 100%;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: #f1f5f9;
+            color: #333;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideInRight 0.3s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .notification-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .notification-error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .notification-info {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .print-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .final-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .modal-content {
+                margin: 10px;
+                padding: 20px;
+                max-height: 90vh;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+            
+            .print-section {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Enhanced Button Effects */
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 60, 113, 0.2);
+        }
+
+        /* Print-specific styles */
+        @media print {
+            .no-print, .navigation-buttons, .final-buttons, .print-section {
+                display: none !important;
+            }
+        }
+
+        /* Loading state for buttons */
+        .btn.loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Enhanced bilingual support */
+        .bilingual .fr, .bilingual .ar {
+            display: block;
+        }
+
+        .bilingual.ar-hidden .ar {
+            display: none;
+        }
+
+        .bilingual.fr-hidden .fr {
+            display: none;
+        }
+
+        /* Improved hover effects */
+        .summary-item:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Status badge improvements */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-badge.validated::before {
+            content: '✓';
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>
